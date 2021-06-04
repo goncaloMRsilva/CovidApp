@@ -39,7 +39,7 @@ class TabelaUtentes(db: SQLiteDatabase) {
         const val NOME_TABELA = "Utente"
         const val CAMPO_NOME = "NomeUtente"
         const val CAMPO_IDADE = "IdadeUtente"
-        const val CAMPO_DOSAGEM1 = "Dosagem1"
-        const val CAMPO_DOSAGEM2 = "Dosagem2"
+        const val CAMPO_DOSAGEM1 = "DataDosagem1"
+        const val CAMPO_DOSAGEM2 = "DataDosagem2"
     }
 }
