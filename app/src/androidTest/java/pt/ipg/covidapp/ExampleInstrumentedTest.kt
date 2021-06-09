@@ -296,4 +296,18 @@ class TesteBaseDados {
         db.close()
     }
 
+    @Test
+    fun consegueLerProfissionalSaude(){
+        val db = getBdAdministracaoOpenHelper().writableDatabase
+        val tabelaProfissionalSaude = getTabelaProfissionalSaude(db)
+        val ProfissionalSaude = ProfissionalSaude(NomeProfissional = "?", FuncaoProfissional = "?")
+
+        ProfissionalSaude.id = insereProfissionalSaude(tabelaProfissionalSaude, ProfissionalSaude)
+
+        val ProfissionalSaudeBD = getProfissionalSaudeBD(tabelaProfissionalSaude, ProfissionalSaude.id)
+        assertEquals(ProfissionalSaude, ProfissionalSaudeBD)
+
+        db.close()
+    }
+
 }
