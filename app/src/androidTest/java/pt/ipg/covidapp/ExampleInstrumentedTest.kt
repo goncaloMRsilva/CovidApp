@@ -116,4 +116,29 @@ class TesteBaseDados {
         db.close()
     }
 
+    @Test
+    fun consegueAlterarVacinas(){
+        val db = getBdAdministracaoOpenHelper().writableDatabase
+        val tabelaVacinas = getTabelaVacinas(db);
+        val vacina = Vacina(nome = "", dosagem = 0, quantidade = 0)
+
+        vacina.id = insereVacina(tabelaVacinas, vacina)
+
+        vacina.nome = "Pfizer"
+        vacina.dosagem = 2
+        vacina.quantidade = 998
+
+        val registosAlterados = tabelaVacinas.update(
+                vacina.toContentValues(),
+                "${BaseColumns._ID}=?",
+                arrayOf(vacina.id.toString())
+        )
+
+        assertEquals(1, registosAlterados)
+        val vacinaBD = getVacinaBD(tabelaVacinas, vacina.id)
+        assertEquals(vacina, vacinaBD)
+
+        db.close()
+    }
+
 }
