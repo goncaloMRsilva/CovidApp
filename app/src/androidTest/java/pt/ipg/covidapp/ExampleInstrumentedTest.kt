@@ -206,4 +206,23 @@ class TesteBaseDados {
 
         db.close()
     }
+
+    @Test
+    fun consegueApagarUtentes(){
+        val db = getBdAdministracaoOpenHelper().writableDatabase
+        val tabelaUtentes = getTabelaUtentes(db)
+        val utente = Utentes(NomeUtente= "?", DataNascimento = 0, DataDosagem1 = 0, DataDosagem2 = 0)
+
+        utente.id = insereUtente(tabelaUtentes, utente)
+
+        val registosEliminados =tabelaUtentes.delete(
+                "${BaseColumns._ID}=?",
+                arrayOf(utente.id.toString())
+        )
+
+        assertEquals(1, registosEliminados)
+
+        db.close()
+    }
+
 }
