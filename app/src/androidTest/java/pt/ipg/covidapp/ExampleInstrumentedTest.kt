@@ -253,4 +253,29 @@ class TesteBaseDados {
         db.close()
     }
 
+
+    @Test
+    fun consegueAlterarProfissionalSaude(){
+        val db = getBdAdministracaoOpenHelper().writableDatabase
+        val tabelaProfissionalSaude = getTabelaProfissionalSaude(db);
+        val ProfissionalSaude = ProfissionalSaude(NomeProfissional = "Claudia Vieira", FuncaoProfissional = "Enfermeira")
+
+        ProfissionalSaude.id = insereProfissionalSaude(tabelaProfissionalSaude, ProfissionalSaude)
+
+        ProfissionalSaude.NomeProfissional = "Augusto Soares"
+        ProfissionalSaude.FuncaoProfissional = "Médico"
+
+        val registosAlterados = tabelaProfissionalSaude.update(
+                ProfissionalSaude.toContentValues(),
+                "${BaseColumns._ID}=?",
+                arrayOf(ProfissionalSaude.id.toString())
+        )
+
+        assertEquals(1, registosAlterados)
+        val ProfissionalSaudeBD = getProfissionalSaudeBD(tabelaProfissionalSaude, ProfissionalSaude.id)
+        assertEquals(ProfissionalSaude, ProfissionalSaudeBD)
+
+        db.close()
+    }
+
 }
