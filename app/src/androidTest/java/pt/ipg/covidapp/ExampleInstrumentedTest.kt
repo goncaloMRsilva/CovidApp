@@ -141,4 +141,21 @@ class TesteBaseDados {
         db.close()
     }
 
+    @Test
+    fun consegueApagarVacinas(){
+        val db = getBdAdministracaoOpenHelper().writableDatabase
+        val tabelaVacinas = getTabelaVacinas(db);
+        val vacina = Vacina(nome = "?", dosagem = 0, quantidade = 990 )
+
+        vacina.id = insereVacina(tabelaVacinas, vacina)
+
+        val registosEliminados = tabelaVacinas.delete(
+                "${BaseColumns._ID}=?",
+                arrayOf(vacina.id.toString())
+        )
+
+        assertEquals(1, registosEliminados)
+
+        db.close()
+    }
 }
