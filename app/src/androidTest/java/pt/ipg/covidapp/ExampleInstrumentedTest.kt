@@ -184,4 +184,26 @@ class TesteBaseDados {
         assertEquals(utente, utenteBD)
         db.close()
     }
+
+    @Test
+    fun consegueAlterarUtentes(){
+        val db = getBdAdministracaoOpenHelper().writableDatabase
+        val tabelaUtentes = getTabelaUtentes(db)
+        val utente = Utentes(NomeUtente= "?", DataNascimento = 0, DataDosagem1 = 0, DataDosagem2 = 0)
+
+        utente.id = insereUtente(tabelaUtentes, utente)
+        utente.NomeUtente= "Adriano Lameiras"
+        utente.DataNascimento= 2051998
+        utente.DataDosagem1= 1
+        utente.DataDosagem2 = 2
+        val registosAlterados = tabelaUtentes.update(
+                utente.toContentValues(),
+                "${BaseColumns._ID}=?",
+                arrayOf(utente.id.toString())
+        )
+
+        assertEquals(1, registosAlterados)
+
+        db.close()
+    }
 }
