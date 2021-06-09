@@ -23,7 +23,7 @@ class TesteBaseDados {
 
     private fun getTabelaUtentes(db: SQLiteDatabase) = TabelaUtentes(db)
     private fun getTabelaVacinas(db: SQLiteDatabase) = TabelaVacinas(db)
-    private fun getTabelaDoses(db: SQLiteDatabase) = TabelaProfissionalSaude(db)
+    private fun getTabelaProfissionalSaude(db: SQLiteDatabase) = TabelaProfissionalSaude(db)
 
     private fun insereUtente(tabelaUtentes: TabelaUtentes, utente: Utentes): Long {
         val id = tabelaUtentes.insert(utente.toContentValues())
@@ -73,7 +73,7 @@ class TesteBaseDados {
         return Vacina.fromCursor(cursor)
     }
 
-    private fun getDosesBD(
+    private fun getProfissionalSaudeBD(
             tabelaProfissionalSaude: TabelaProfissionalSaude, id: Long  ): ProfissionalSaude {
         val cursor = tabelaProfissionalSaude.query(
                 TabelaProfissionalSaude.TODOS_CAMPOS,
@@ -236,6 +236,20 @@ class TesteBaseDados {
         val utenteBD = getUtenteBD(tabelaUtentes, utente.id)
         assertEquals(utente, utenteBD)
 
+        db.close()
+    }
+
+
+
+    @Test
+    fun consegueInserirProfissionalSaude(){
+        val db = getBdAdministracaoOpenHelper().writableDatabase
+        val tabelaProfissionalSaude = getTabelaProfissionalSaude(db)
+        val ProfissionalSaude = ProfissionalSaude(NomeProfissional = "Claudia Vieira", FuncaoProfissional = "Enfermeira")
+
+        ProfissionalSaude.id = insereProfissionalSaude(tabelaProfissionalSaude, ProfissionalSaude)
+        val ProfissionalSaudeBD = getProfissionalSaudeBD(tabelaProfissionalSaude, ProfissionalSaude.id)
+        assertEquals(ProfissionalSaude, ProfissionalSaudeBD)
         db.close()
     }
 
