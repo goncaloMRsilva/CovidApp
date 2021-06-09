@@ -278,4 +278,22 @@ class TesteBaseDados {
         db.close()
     }
 
+    @Test
+    fun consegueApagarProfissionalSaude(){
+        val db = getBdAdministracaoOpenHelper().writableDatabase
+        val tabelaProfissionalSaude = getTabelaProfissionalSaude(db)
+        val ProfissionalSaude = ProfissionalSaude(NomeProfissional = "?", FuncaoProfissional = "?")
+
+        ProfissionalSaude.id = insereProfissionalSaude(tabelaProfissionalSaude, ProfissionalSaude)
+
+        val registosEliminados =tabelaProfissionalSaude.delete(
+                "${BaseColumns._ID}=?",
+                arrayOf(ProfissionalSaude.id.toString())
+        )
+
+        assertEquals(1, registosEliminados)
+
+        db.close()
+    }
+
 }
