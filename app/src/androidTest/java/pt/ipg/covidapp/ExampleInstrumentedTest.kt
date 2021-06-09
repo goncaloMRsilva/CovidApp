@@ -102,4 +102,18 @@ class TesteBaseDados {
 
         db.close()
     }
+
+    @Test
+    fun consegueInserirVacinas(){
+        val db = getBdAdministracaoOpenHelper().writableDatabase
+        val tabelaVacinas = getTabelaVacinas(db);
+        val vacina = Vacina( nome = "AstraZeneca", dosagem = 1, quantidade = 1000)
+
+        vacina.id = insereVacina(tabelaVacinas, vacina)
+
+        val vacinaBD = getVacinaBD(tabelaVacinas, vacina.id)
+        assertEquals(vacina, vacinaBD)
+        db.close()
+    }
+
 }
