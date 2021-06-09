@@ -25,12 +25,12 @@ class TabelaProfissionalSaude(db: SQLiteDatabase) {
     }
 
     fun query(
-        columns: Array<String>,
-        selection: String,
-        selectionArgs: Array<String>,
-        groupBy: String,
-        having: String,
-        orderBy: String
+            columns: Array<String>,
+            selection: String?,
+            selectionArgs: Array<String>?,
+            groupBy: String?,
+            having: String?,
+            orderBy: String?
     ): Cursor? {
         return db.query(TabelaProfissionalSaude.NOME_TABELA, columns, selection, selectionArgs, groupBy, having, orderBy)
     }
@@ -39,5 +39,7 @@ class TabelaProfissionalSaude(db: SQLiteDatabase) {
         const val NOME_TABELA = "ProfissionalSaude"
         const val CAMPO_NOME = "NomeProfissional"
         const val CAMPO_FUNCAO = "FuncaoProfissional"
+
+        val TODOS_CAMPOS =arrayOf(BaseColumns._ID, CAMPO_NOME, CAMPO_FUNCAO)
     }
 }
