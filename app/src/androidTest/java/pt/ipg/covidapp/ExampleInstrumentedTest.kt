@@ -225,4 +225,18 @@ class TesteBaseDados {
         db.close()
     }
 
+    @Test
+    fun consegueLerUtentes(){
+        val db = getBdAdministracaoOpenHelper().writableDatabase
+        val tabelaUtentes = getTabelaUtentes(db)
+        val utente = Utentes(NomeUtente= "?", DataNascimento = 0, DataDosagem1 = 0, DataDosagem2 = 0)
+
+        utente.id = insereUtente(tabelaUtentes, utente)
+
+        val utenteBD = getUtenteBD(tabelaUtentes, utente.id)
+        assertEquals(utente, utenteBD)
+
+        db.close()
+    }
+
 }
