@@ -384,4 +384,18 @@ class TesteBaseDados {
         db.close()
     }
 
+    @Test
+    fun consegueLerCargo(){
+        val db = getBdAdministracaoOpenHelper().writableDatabase
+        val tabelaCargo = getTabelaCargo(db)
+        val cargo = Cargo(funcaoProfissional = "Auxiliar de saude")
+
+        cargo.id = insereCargo(tabelaCargo, cargo)
+
+        val CargoBD = getCargoBD(tabelaCargo, cargo.id)
+        assertEquals(cargo, CargoBD)
+
+        db.close()
+    }
+
 }
