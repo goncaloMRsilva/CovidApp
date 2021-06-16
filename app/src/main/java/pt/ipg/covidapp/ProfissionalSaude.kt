@@ -4,10 +4,11 @@ import android.content.ContentValues
 import android.database.Cursor
 import android.provider.BaseColumns
 
-data class ProfissionalSaude(var id: Long = -1, var NomeProfissional: String)  {
+data class ProfissionalSaude(var id: Long = -1, var NomeProfissional: String, var IDCargo: Long)  {
     fun toContentValues(): ContentValues {
         val valores = ContentValues().apply {
             put(TabelaProfissionalSaude.CAMPO_NOME, NomeProfissional)
+            put(TabelaProfissionalSaude.CAMPO_ID_CARGO, IDCargo)
         }
 
         return valores
@@ -17,11 +18,13 @@ data class ProfissionalSaude(var id: Long = -1, var NomeProfissional: String)  {
         fun fromCursor(cursor: Cursor): ProfissionalSaude {
             val colId = cursor.getColumnIndex(BaseColumns._ID)
             val colNomeProfissional = cursor.getColumnIndex(TabelaProfissionalSaude.CAMPO_NOME)
+            val colIDCargo = cursor.getColumnIndex(TabelaProfissionalSaude.CAMPO_ID_CARGO)
 
             val id = cursor.getLong(colId)
             val NomeProfissional = cursor.getString(colNomeProfissional)
+            val IDCargo = cursor.getLong(colIDCargo)
 
-            return ProfissionalSaude(id, NomeProfissional)
+            return ProfissionalSaude(id, NomeProfissional, IDCargo)
         }
     }
 }

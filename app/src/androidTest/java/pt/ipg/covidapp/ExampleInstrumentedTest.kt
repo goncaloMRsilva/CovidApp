@@ -265,9 +265,15 @@ class TesteBaseDados {
 
     @Test
     fun consegueInserirProfissionalSaude(){
+
         val db = getBdAdministracaoOpenHelper().writableDatabase
+        val tabelaCargo = getTabelaCargo(db)
+        val cargo = Cargo(funcaoProfissional = "Auxiliar de saude")
+
+        cargo.id = insereCargo(tabelaCargo, cargo)
+
         val tabelaProfissionalSaude = getTabelaProfissionalSaude(db)
-        val ProfissionalSaude = ProfissionalSaude(NomeProfissional = "Claudia Vieira")
+        val ProfissionalSaude = ProfissionalSaude(NomeProfissional = "Claudia Vieira", IDCargo = cargo.id)
 
         ProfissionalSaude.id = insereProfissionalSaude(tabelaProfissionalSaude, ProfissionalSaude)
         val ProfissionalSaudeBD = getProfissionalSaudeBD(tabelaProfissionalSaude, ProfissionalSaude.id)
@@ -278,9 +284,15 @@ class TesteBaseDados {
 
     @Test
     fun consegueAlterarProfissionalSaude(){
+
         val db = getBdAdministracaoOpenHelper().writableDatabase
+        val tabelaCargo = getTabelaCargo(db)
+        val cargo = Cargo(funcaoProfissional = "Auxiliar de saude")
+
+        cargo.id = insereCargo(tabelaCargo, cargo)
+
         val tabelaProfissionalSaude = getTabelaProfissionalSaude(db);
-        val ProfissionalSaude = ProfissionalSaude(NomeProfissional = "Claudia Vieira")
+        val ProfissionalSaude = ProfissionalSaude(NomeProfissional = "Claudia Vieira", IDCargo = cargo.id)
 
         ProfissionalSaude.id = insereProfissionalSaude(tabelaProfissionalSaude, ProfissionalSaude)
 
@@ -299,11 +311,17 @@ class TesteBaseDados {
         db.close()
     }
 
+
     @Test
     fun consegueApagarProfissionalSaude(){
         val db = getBdAdministracaoOpenHelper().writableDatabase
+        val tabelaCargo = getTabelaCargo(db)
+        val cargo = Cargo(funcaoProfissional = "Auxiliar de saude")
+
+        cargo.id = insereCargo(tabelaCargo, cargo)
+
         val tabelaProfissionalSaude = getTabelaProfissionalSaude(db)
-        val ProfissionalSaude = ProfissionalSaude(NomeProfissional = "?")
+        val ProfissionalSaude = ProfissionalSaude(NomeProfissional = "?", IDCargo = cargo.id)
 
         ProfissionalSaude.id = insereProfissionalSaude(tabelaProfissionalSaude, ProfissionalSaude)
 
@@ -320,8 +338,13 @@ class TesteBaseDados {
     @Test
     fun consegueLerProfissionalSaude(){
         val db = getBdAdministracaoOpenHelper().writableDatabase
+        val tabelaCargo = getTabelaCargo(db)
+        val cargo = Cargo(funcaoProfissional = "Auxiliar de saude")
+
+        cargo.id = insereCargo(tabelaCargo, cargo)
+
         val tabelaProfissionalSaude = getTabelaProfissionalSaude(db)
-        val ProfissionalSaude = ProfissionalSaude(NomeProfissional = "?")
+        val ProfissionalSaude = ProfissionalSaude(NomeProfissional = "Claudia Vieira", IDCargo = cargo.id)
 
         ProfissionalSaude.id = insereProfissionalSaude(tabelaProfissionalSaude, ProfissionalSaude)
 
