@@ -107,7 +107,7 @@ class TesteBaseDados {
     fun consegueInserirVacinas(){
         val db = getBdAdministracaoOpenHelper().writableDatabase
         val tabelaVacinas = getTabelaVacinas(db);
-        val vacina = Vacina( nome = "AstraZeneca", dosagem = 1, quantidade = 1000)
+        val vacina = Vacina( nome = "AstraZeneca", quantidade = 1000)
 
         vacina.id = insereVacina(tabelaVacinas, vacina)
 
@@ -120,12 +120,11 @@ class TesteBaseDados {
     fun consegueAlterarVacinas(){
         val db = getBdAdministracaoOpenHelper().writableDatabase
         val tabelaVacinas = getTabelaVacinas(db);
-        val vacina = Vacina(nome = "", dosagem = 0, quantidade = 0)
+        val vacina = Vacina(nome = "", quantidade = 0)
 
         vacina.id = insereVacina(tabelaVacinas, vacina)
 
         vacina.nome = "Pfizer"
-        vacina.dosagem = 2
         vacina.quantidade = 998
 
         val registosAlterados = tabelaVacinas.update(
@@ -145,7 +144,7 @@ class TesteBaseDados {
     fun consegueApagarVacinas(){
         val db = getBdAdministracaoOpenHelper().writableDatabase
         val tabelaVacinas = getTabelaVacinas(db);
-        val vacina = Vacina(nome = "?", dosagem = 0, quantidade = 990 )
+        val vacina = Vacina(nome = "?", quantidade = 990 )
 
         vacina.id = insereVacina(tabelaVacinas, vacina)
 
@@ -163,7 +162,7 @@ class TesteBaseDados {
     fun consegueLerVacinas(){
         val db = getBdAdministracaoOpenHelper().writableDatabase
         val tabelaVacinas = getTabelaVacinas(db);
-        val vacina = Vacina(nome = "", dosagem = 2, quantidade = 2000)
+        val vacina = Vacina(nome = "", quantidade = 2000)
 
         vacina.id = insereVacina(tabelaVacinas, vacina)
 
