@@ -343,4 +343,27 @@ class TesteBaseDados {
         db.close()
     }
 
+    @Test
+    fun consegueAlterarCargo(){
+        val db = getBdAdministracaoOpenHelper().writableDatabase
+        val tabelaCargo = getTabelaCargo(db);
+        val cargo = Cargo(funcaoProfissional = "?")
+
+        cargo.id = insereCargo(tabelaCargo, cargo)
+
+        cargo.funcaoProfissional = "Médico"
+
+        val registosAlterados = tabelaCargo.update(
+                cargo.toContentValues(),
+                "${BaseColumns._ID}=?",
+                arrayOf(cargo.id.toString())
+        )
+
+        assertEquals(1, registosAlterados)
+        val CargoBD = getCargoBD(tabelaCargo, cargo.id)
+        assertEquals(cargo, CargoBD)
+
+        db.close()
+    }
+
 }
