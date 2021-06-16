@@ -366,4 +366,22 @@ class TesteBaseDados {
         db.close()
     }
 
+    @Test
+    fun consegueApagarCargo(){
+        val db = getBdAdministracaoOpenHelper().writableDatabase
+        val tabelaCargo = getTabelaCargo(db)
+        val cargo = Cargo(funcaoProfissional = "Enfermeiro")
+
+        cargo.id = insereCargo(tabelaCargo, cargo)
+
+        val registosEliminados =tabelaCargo.delete(
+                "${BaseColumns._ID}=?",
+                arrayOf(cargo.id.toString())
+        )
+
+        assertEquals(1, registosEliminados)
+
+        db.close()
+    }
+
 }
