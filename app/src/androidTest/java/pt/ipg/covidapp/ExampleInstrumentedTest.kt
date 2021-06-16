@@ -24,6 +24,8 @@ class TesteBaseDados {
     private fun getTabelaUtentes(db: SQLiteDatabase) = TabelaUtentes(db)
     private fun getTabelaVacinas(db: SQLiteDatabase) = TabelaVacinas(db)
     private fun getTabelaProfissionalSaude(db: SQLiteDatabase) = TabelaProfissionalSaude(db)
+    private fun getTabelaCargo(db: SQLiteDatabase) = TabelaCargo(db)
+
 
     private fun insereUtente(tabelaUtentes: TabelaUtentes, utente: Utentes): Long {
         val id = tabelaUtentes.insert(utente.toContentValues())
@@ -39,6 +41,12 @@ class TesteBaseDados {
 
     private fun insereProfissionalSaude(tabelaProfissionalSaude: TabelaProfissionalSaude, profissionalSaude: ProfissionalSaude): Long {
         val id = tabelaProfissionalSaude.insert(profissionalSaude.toContentValues())
+        assertNotEquals(-1, id)
+        return id
+    }
+
+    private fun insereCargo(tabelaCargo: TabelaCargo, cargo: Cargo): Long {
+        val id = tabelaCargo.insert(cargo.toContentValues())
         assertNotEquals(-1, id)
         return id
     }
@@ -86,6 +94,21 @@ class TesteBaseDados {
         assertNotNull(cursor)
         assert(cursor!!.moveToNext())
         return ProfissionalSaude.fromCursor(cursor)
+    }
+
+    private fun getCargoBD(
+            tabelaCargo: TabelaCargo, id: Long  ): Cargo {
+        val cursor = tabelaCargo.query(
+                TabelaCargo.TODOS_CAMPOS,
+                "${BaseColumns._ID}=?",
+                arrayOf(id.toString()),
+                null,
+                null,
+                null
+        )
+        assertNotNull(cursor)
+        assert(cursor!!.moveToNext())
+        return Cargo.fromCursor(cursor)
     }
 
 
@@ -244,7 +267,7 @@ class TesteBaseDados {
     fun consegueInserirProfissionalSaude(){
         val db = getBdAdministracaoOpenHelper().writableDatabase
         val tabelaProfissionalSaude = getTabelaProfissionalSaude(db)
-        val ProfissionalSaude = ProfissionalSaude(NomeProfissional = "Claudia Vieira", FuncaoProfissional = "Enfermeira")
+        val ProfissionalSaude = ProfissionalSaude(NomeProfissional = "Claudia Vieira")
 
         ProfissionalSaude.id = insereProfissionalSaude(tabelaProfissionalSaude, ProfissionalSaude)
         val ProfissionalSaudeBD = getProfissionalSaudeBD(tabelaProfissionalSaude, ProfissionalSaude.id)
@@ -257,12 +280,11 @@ class TesteBaseDados {
     fun consegueAlterarProfissionalSaude(){
         val db = getBdAdministracaoOpenHelper().writableDatabase
         val tabelaProfissionalSaude = getTabelaProfissionalSaude(db);
-        val ProfissionalSaude = ProfissionalSaude(NomeProfissional = "Claudia Vieira", FuncaoProfissional = "Enfermeira")
+        val ProfissionalSaude = ProfissionalSaude(NomeProfissional = "Claudia Vieira")
 
         ProfissionalSaude.id = insereProfissionalSaude(tabelaProfissionalSaude, ProfissionalSaude)
 
         ProfissionalSaude.NomeProfissional = "Augusto Soares"
-        ProfissionalSaude.FuncaoProfissional = "Médico"
 
         val registosAlterados = tabelaProfissionalSaude.update(
                 ProfissionalSaude.toContentValues(),
@@ -281,7 +303,7 @@ class TesteBaseDados {
     fun consegueApagarProfissionalSaude(){
         val db = getBdAdministracaoOpenHelper().writableDatabase
         val tabelaProfissionalSaude = getTabelaProfissionalSaude(db)
-        val ProfissionalSaude = ProfissionalSaude(NomeProfissional = "?", FuncaoProfissional = "?")
+        val ProfissionalSaude = ProfissionalSaude(NomeProfissional = "?")
 
         ProfissionalSaude.id = insereProfissionalSaude(tabelaProfissionalSaude, ProfissionalSaude)
 
@@ -299,13 +321,25 @@ class TesteBaseDados {
     fun consegueLerProfissionalSaude(){
         val db = getBdAdministracaoOpenHelper().writableDatabase
         val tabelaProfissionalSaude = getTabelaProfissionalSaude(db)
-        val ProfissionalSaude = ProfissionalSaude(NomeProfissional = "?", FuncaoProfissional = "?")
+        val ProfissionalSaude = ProfissionalSaude(NomeProfissional = "?")
 
         ProfissionalSaude.id = insereProfissionalSaude(tabelaProfissionalSaude, ProfissionalSaude)
 
         val ProfissionalSaudeBD = getProfissionalSaudeBD(tabelaProfissionalSaude, ProfissionalSaude.id)
         assertEquals(ProfissionalSaude, ProfissionalSaudeBD)
 
+        db.close()
+    }
+
+    @Test
+    fun consegueInserirCargo(){
+        val db = getBdAdministracaoOpenHelper().writableDatabase
+        val tabelaCargo = getTabelaCargo(db)
+        val cargo = Cargo(funcaoProfissional = "Enfermeiro")
+
+        cargo.id = insereCargo(tabelaCargo, cargo)
+        val cargoBD = getCargoBD(tabelaCargo, cargo.id)
+        assertEquals(cargo, cargoBD)
         db.close()
     }
 

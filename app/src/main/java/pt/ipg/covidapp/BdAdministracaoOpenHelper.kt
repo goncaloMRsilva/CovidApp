@@ -17,6 +17,7 @@ class BdAdministracaoOpenHelper(context: Context?)
             TabelaVacinas(db).cria()
             TabelaProfissionalSaude(db).cria()
             TabelaUtentes(db).cria()
+            TabelaCargo(db).cria()
         }
     }
 
