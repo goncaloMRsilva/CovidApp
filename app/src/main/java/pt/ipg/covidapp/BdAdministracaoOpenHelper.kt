@@ -16,8 +16,9 @@ class BdAdministracaoOpenHelper(context: Context?)
         if (db != null) {
             TabelaVacinas(db).cria()
             TabelaProfissionalSaude(db).cria()
-            TabelaUtentes(db).cria()
+            TabelaUtente(db).cria()
             TabelaCargo(db).cria()
+            TabelaDosagem(db).cria()
         }
     }
 

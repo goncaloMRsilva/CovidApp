@@ -42,7 +42,7 @@ class ContentProviderCovidApp : ContentProvider(){
                     null,
                     null
             )
-            URI_UTENTES -> TabelaUtentes(bd).query(
+            URI_UTENTES -> TabelaUtente(bd).query(
                     projection as Array<String>,
                     selection,
                     selectionArgs as Array<String>?,
@@ -50,7 +50,7 @@ class ContentProviderCovidApp : ContentProvider(){
                     null,
                     sortOrder
             )
-            URI_UTENTE_ESPECIFICO ->TabelaUtentes(bd).query(
+            URI_UTENTE_ESPECIFICO ->TabelaUtente(bd).query(
                     projection as Array<String>,
                     "${BaseColumns._ID}=?",
                     arrayOf(uri.lastPathSegment!!), // id
@@ -113,7 +113,7 @@ class ContentProviderCovidApp : ContentProvider(){
 
         val id = when(getUriMatcher().match(uri)){
             URI_VACINAS -> TabelaVacinas(bd).insert(values!!)
-            URI_UTENTES -> TabelaUtentes(bd).insert(values!!)
+            URI_UTENTES -> TabelaUtente(bd).insert(values!!)
             URI_PROFISSIONALSAUDE -> TabelaProfissionalSaude(bd).insert(values!!)
             URI_CARGO -> TabelaCargo(bd).insert(values!!)
             else -> -1
@@ -131,7 +131,7 @@ class ContentProviderCovidApp : ContentProvider(){
                     "${BaseColumns._ID}=?",
                     arrayOf(uri.lastPathSegment!!) // id
             )
-            URI_UTENTE_ESPECIFICO -> TabelaUtentes(bd).delete(
+            URI_UTENTE_ESPECIFICO -> TabelaUtente(bd).delete(
                     "${BaseColumns._ID}=?",
                     arrayOf(uri.lastPathSegment!!) // id
             )
@@ -161,7 +161,7 @@ class ContentProviderCovidApp : ContentProvider(){
                     "${BaseColumns._ID}=?",
                     arrayOf(uri.lastPathSegment!!) // id
             )
-            URI_UTENTE_ESPECIFICO ->TabelaUtentes(bd).update(
+            URI_UTENTE_ESPECIFICO ->TabelaUtente(bd).update(
                     values!!,
                     "${BaseColumns._ID}=?",
                     arrayOf(uri.lastPathSegment!!) // id

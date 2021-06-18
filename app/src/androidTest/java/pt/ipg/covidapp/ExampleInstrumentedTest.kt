@@ -21,13 +21,13 @@ class TesteBaseDados {
     private fun getAppContext() = InstrumentationRegistry.getInstrumentation().targetContext
     private fun getBdAdministracaoOpenHelper() = BdAdministracaoOpenHelper(getAppContext())
 
-    private fun getTabelaUtentes(db: SQLiteDatabase) = TabelaUtentes(db)
+    private fun getTabelaUtentes(db: SQLiteDatabase) = TabelaUtente(db)
     private fun getTabelaVacinas(db: SQLiteDatabase) = TabelaVacinas(db)
     private fun getTabelaProfissionalSaude(db: SQLiteDatabase) = TabelaProfissionalSaude(db)
     private fun getTabelaCargo(db: SQLiteDatabase) = TabelaCargo(db)
 
 
-    private fun insereUtente(tabelaUtentes: TabelaUtentes, utente: Utentes): Long {
+    private fun insereUtente(tabelaUtentes: TabelaUtente, utente: Utente): Long {
         val id = tabelaUtentes.insert(utente.toContentValues())
         assertNotEquals(-1, id)
         return id
@@ -52,9 +52,9 @@ class TesteBaseDados {
     }
 
     private fun getUtenteBD(
-            tabelaUtentes: TabelaUtentes, id: Long    ): Utentes {
+            tabelaUtentes: TabelaUtente, id: Long    ): Utente {
         val cursor = tabelaUtentes.query(
-                TabelaUtentes.TODOS_CAMPOS,
+                TabelaUtente.TODOS_CAMPOS,
                 "${BaseColumns._ID}=?",
                 arrayOf(id.toString()),
                 null,
@@ -63,7 +63,7 @@ class TesteBaseDados {
         )
         assertNotNull(cursor)
         assert(cursor!!.moveToNext())
-        return Utentes.fromCursor(cursor)
+        return Utente.fromCursor(cursor)
     }
 
     private fun getVacinaBD(
@@ -199,7 +199,7 @@ class TesteBaseDados {
     fun consegueInserirUtentes(){
         val db = getBdAdministracaoOpenHelper().writableDatabase
         val tabelaUtente = getTabelaUtentes(db)
-        val utente = Utentes(NomeUtente= "Goncalo Silva", DataNascimento = 17021999, DataDosagem1 = 9062021 , DataDosagem2 = 9092021 )
+        val utente = Utente(NomeUtente= "Goncalo Silva", DataNascimento = 17021999)
 
         utente.id = insereUtente(tabelaUtente, utente)
         val utenteBD = getUtenteBD(tabelaUtente, utente.id)
@@ -211,13 +211,11 @@ class TesteBaseDados {
     fun consegueAlterarUtentes(){
         val db = getBdAdministracaoOpenHelper().writableDatabase
         val tabelaUtentes = getTabelaUtentes(db)
-        val utente = Utentes(NomeUtente= "?", DataNascimento = 0, DataDosagem1 = 0, DataDosagem2 = 0)
+        val utente = Utente(NomeUtente= "?", DataNascimento = 0)
 
         utente.id = insereUtente(tabelaUtentes, utente)
         utente.NomeUtente= "Adriano Lameiras"
         utente.DataNascimento= 2051998
-        utente.DataDosagem1= 1
-        utente.DataDosagem2 = 2
         val registosAlterados = tabelaUtentes.update(
                 utente.toContentValues(),
                 "${BaseColumns._ID}=?",
@@ -233,7 +231,7 @@ class TesteBaseDados {
     fun consegueApagarUtentes(){
         val db = getBdAdministracaoOpenHelper().writableDatabase
         val tabelaUtentes = getTabelaUtentes(db)
-        val utente = Utentes(NomeUtente= "?", DataNascimento = 0, DataDosagem1 = 0, DataDosagem2 = 0)
+        val utente = Utente(NomeUtente= "?", DataNascimento = 0)
 
         utente.id = insereUtente(tabelaUtentes, utente)
 
@@ -251,7 +249,7 @@ class TesteBaseDados {
     fun consegueLerUtentes(){
         val db = getBdAdministracaoOpenHelper().writableDatabase
         val tabelaUtentes = getTabelaUtentes(db)
-        val utente = Utentes(NomeUtente= "?", DataNascimento = 0, DataDosagem1 = 0, DataDosagem2 = 0)
+        val utente = Utente(NomeUtente= "?", DataNascimento = 0)
 
         utente.id = insereUtente(tabelaUtentes, utente)
 
