@@ -13,7 +13,6 @@ class ContentProviderCovidApp : ContentProvider(){
     override fun onCreate(): Boolean {
         bdAdministracaoOpenHelper = BdAdministracaoOpenHelper(context)
 
-
         return true
     }
 
