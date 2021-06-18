@@ -29,7 +29,7 @@ class ContentProviderCovidApp : ContentProvider(){
             URI_VACINAS -> TabelaVacinas(bd).query(
                     projection as Array<String>,
                     selection,
-                    selectionArgs as Array<String>,
+                    selectionArgs as Array<String>?,
                     null,
                     null,
                     sortOrder
@@ -45,7 +45,7 @@ class ContentProviderCovidApp : ContentProvider(){
             URI_UTENTES -> TabelaUtentes(bd).query(
                     projection as Array<String>,
                     selection,
-                    selectionArgs as Array<String>,
+                    selectionArgs as Array<String>?,
                     null,
                     null,
                     sortOrder
@@ -61,7 +61,7 @@ class ContentProviderCovidApp : ContentProvider(){
             URI_PROFISSIONALSAUDE -> TabelaProfissionalSaude(bd).query(
                     projection as Array<String>,
                     selection,
-                    selectionArgs as Array<String>,
+                    selectionArgs as Array<String>?,
                     null,
                     null,
                     sortOrder
@@ -77,7 +77,7 @@ class ContentProviderCovidApp : ContentProvider(){
             URI_CARGO -> TabelaCargo(bd).query(
                     projection as Array<String>,
                     selection,
-                    selectionArgs as Array<String>,
+                    selectionArgs as Array<String>?,
                     null,
                     null,
                     sortOrder
