@@ -90,6 +90,22 @@ class ContentProviderCovidApp : ContentProvider(){
                     null,
                     null
             )
+            URI_DOSAGEM -> TabelaDosagem(bd).query(
+                    projection as Array<String>,
+                    selection,
+                    selectionArgs as Array<String>?,
+                    null,
+                    null,
+                    sortOrder
+            )
+            URI_DOSAGEM_ESPECIFICO ->TabelaDosagem(bd).query(
+                    projection as Array<String>,
+                    "${BaseColumns._ID}=?",
+                    arrayOf(uri.lastPathSegment!!), // id
+                    null,
+                    null,
+                    null
+            )
             else -> null
         }
     }
@@ -104,6 +120,8 @@ class ContentProviderCovidApp : ContentProvider(){
             URI_PROFISSIONALSAUDE_ESPECIFICO -> "$UNICO_ITEM/$PROFISSIONALSAUDE"
             URI_CARGO -> "$MULTIPLOS_ITEMS/$CARGO"
             URI_CARGO_ESPECIFICO -> "$UNICO_ITEM/$CARGO"
+            URI_DOSAGEM -> "$MULTIPLOS_ITEMS/$DOSAGEM"
+            URI_DOSAGEM_ESPECIFICO -> "$UNICO_ITEM/$DOSAGEM"
             else -> null
         }
     }
@@ -116,6 +134,7 @@ class ContentProviderCovidApp : ContentProvider(){
             URI_UTENTES -> TabelaUtente(bd).insert(values!!)
             URI_PROFISSIONALSAUDE -> TabelaProfissionalSaude(bd).insert(values!!)
             URI_CARGO -> TabelaCargo(bd).insert(values!!)
+            URI_DOSAGEM -> TabelaDosagem(bd).insert(values!!)
             else -> -1
         }
 
@@ -140,6 +159,10 @@ class ContentProviderCovidApp : ContentProvider(){
                     arrayOf(uri.lastPathSegment!!) // id
             )
             URI_CARGO_ESPECIFICO -> TabelaCargo(bd).delete(
+                    "${BaseColumns._ID}=?",
+                    arrayOf(uri.lastPathSegment!!) // id
+            )
+            URI_DOSAGEM_ESPECIFICO -> TabelaDosagem(bd).delete(
                     "${BaseColumns._ID}=?",
                     arrayOf(uri.lastPathSegment!!) // id
             )
@@ -176,6 +199,11 @@ class ContentProviderCovidApp : ContentProvider(){
                     "${BaseColumns._ID}=?",
                     arrayOf(uri.lastPathSegment!!) // id
             )
+            URI_DOSAGEM_ESPECIFICO ->TabelaDosagem(bd).update(
+                    values!!,
+                    "${BaseColumns._ID}=?",
+                    arrayOf(uri.lastPathSegment!!) // id
+            )
             else -> 0
         }
     }
@@ -186,6 +214,7 @@ class ContentProviderCovidApp : ContentProvider(){
         private const val UTENTES = "utentes"
         private const val PROFISSIONALSAUDE = "profissionalsaude"
         private const val CARGO = "cargo"
+        private const val DOSAGEM = "dosagem"
 
         private const val URI_VACINAS = 100
         private const val URI_VACINA_ESPECIFICO = 101
@@ -195,6 +224,8 @@ class ContentProviderCovidApp : ContentProvider(){
         private const val URI_PROFISSIONALSAUDE_ESPECIFICO = 301
         private const val URI_CARGO = 400
         private const val URI_CARGO_ESPECIFICO = 401
+        private const val URI_DOSAGEM = 500
+        private const val URI_DOSAGEM_ESPECIFICO = 501
 
         private const val MULTIPLOS_ITEMS = "vnd,android.cursor.dir"
         private const val UNICO_ITEM = "vnd,android.cursor.item"
@@ -204,6 +235,7 @@ class ContentProviderCovidApp : ContentProvider(){
         public val ENDERECO_UTENTES = Uri.withAppendedPath(ENDERECO_BASE, UTENTES)
         public val ENDERECO_PROFISSIONALSAUDE = Uri.withAppendedPath(ENDERECO_BASE, PROFISSIONALSAUDE)
         public val ENDERECO_CARGO = Uri.withAppendedPath(ENDERECO_BASE, CARGO)
+        public val ENDERECO_DOSAGEM = Uri.withAppendedPath(ENDERECO_BASE, DOSAGEM)
 
         private fun getUriMatcher() : UriMatcher {
             val uriMatcher = UriMatcher(UriMatcher.NO_MATCH)
@@ -216,6 +248,8 @@ class ContentProviderCovidApp : ContentProvider(){
             uriMatcher.addURI(AUTHORITY, "$PROFISSIONALSAUDE/#", 301)
             uriMatcher.addURI(AUTHORITY, CARGO, 400)
             uriMatcher.addURI(AUTHORITY, "$CARGO/#", 401)
+            uriMatcher.addURI(AUTHORITY, DOSAGEM, 500)
+            uriMatcher.addURI(AUTHORITY, "$DOSAGEM/#", 501)
 
             return uriMatcher
         }
