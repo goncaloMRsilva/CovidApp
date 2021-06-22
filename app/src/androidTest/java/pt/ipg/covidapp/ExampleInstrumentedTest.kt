@@ -453,4 +453,30 @@ class TesteBaseDados {
         db.close()
     }
 
+    @Test
+    fun consegueAlterarDosagem(){
+        val db = getBdAdministracaoOpenHelper().writableDatabase
+        val tabelaDosagem = getTabelaDosagem(db);
+        val dosagem = Dosagem(DataAdministracao = 30022021, Dose = 0, IdUtente = 0, IdVacina = 0)
+
+        dosagem.id = insereDosagem(tabelaDosagem, dosagem)
+
+        dosagem.DataAdministracao = 30032021
+        dosagem.Dose = 2
+        dosagem.IdUtente = 1234566
+        dosagem.IdVacina = 3660123
+
+        val registosAlterados = tabelaDosagem.update(
+                dosagem.toContentValues(),
+                "${BaseColumns._ID}=?",
+                arrayOf(dosagem.id.toString())
+        )
+
+        assertEquals(1, registosAlterados)
+        val DosagemBD = getDosagemBD(tabelaDosagem, dosagem.id)
+        assertEquals(dosagem, DosagemBD)
+
+        db.close()
+    }
+
 }
