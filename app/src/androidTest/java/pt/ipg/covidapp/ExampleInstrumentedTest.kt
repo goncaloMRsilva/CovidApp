@@ -497,4 +497,18 @@ class TesteBaseDados {
         db.close()
     }
 
+    @Test
+    fun consegueLerDosagem(){
+        val db = getBdAdministracaoOpenHelper().writableDatabase
+        val tabelaDosagem = getTabelaDosagem(db)
+        val dosagem = Dosagem(DataAdministracao = 30022022, Dose = 4, IdUtente = 1234443, IdVacina = 9892349)
+
+        dosagem.id = insereDosagem(tabelaDosagem, dosagem)
+
+        val DosagemBD = getDosagemBD(tabelaDosagem, dosagem.id)
+        assertEquals(dosagem, DosagemBD)
+
+        db.close()
+    }
+
 }
