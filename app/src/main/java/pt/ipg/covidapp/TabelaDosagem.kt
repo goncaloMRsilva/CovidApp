@@ -13,15 +13,15 @@ class TabelaDosagem(db: SQLiteDatabase) {
     }
 
     fun insert(values: ContentValues): Long {
-        return db.insert(TabelaUtente.NOME_TABELA, null, values)
+        return db.insert(TabelaDosagem.NOME_TABELA, null, values)
     }
 
     fun update(values: ContentValues, whereClause: String, whereArgs: Array<String>): Int {
-        return db.update(TabelaUtente.NOME_TABELA, values, whereClause, whereArgs)
+        return db.update(TabelaDosagem.NOME_TABELA, values, whereClause, whereArgs)
     }
 
     fun delete(whereClause: String, whereArgs: Array<String>): Int {
-        return db.delete(TabelaUtente.NOME_TABELA, whereClause, whereArgs)
+        return db.delete(TabelaDosagem.NOME_TABELA, whereClause, whereArgs)
     }
 
     fun query(
@@ -32,13 +32,13 @@ class TabelaDosagem(db: SQLiteDatabase) {
             having: String?,
             orderBy: String?
     ): Cursor? {
-        return db.query(TabelaUtente.NOME_TABELA, columns, selection, selectionArgs, groupBy, having, orderBy)
+        return db.query(TabelaDosagem.NOME_TABELA, columns, selection, selectionArgs, groupBy, having, orderBy)
     }
 
     companion object {
         const val NOME_TABELA = "Dosagem"
         const val CAMPO_DATA = "DataAdministracao"
-        const val CAMPO_DOSAGEM = "Dosagem"
+        const val CAMPO_DOSAGEM = "Dose"
         const val CAMPO_ID_UTENTE = "IdUtente"
         const val CAMPO_ID_VACINA = "IdVacina"
 

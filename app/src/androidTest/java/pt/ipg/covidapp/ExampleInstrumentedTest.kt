@@ -25,6 +25,7 @@ class TesteBaseDados {
     private fun getTabelaVacinas(db: SQLiteDatabase) = TabelaVacinas(db)
     private fun getTabelaProfissionalSaude(db: SQLiteDatabase) = TabelaProfissionalSaude(db)
     private fun getTabelaCargo(db: SQLiteDatabase) = TabelaCargo(db)
+    private fun getTabelaDosagem(db: SQLiteDatabase) = TabelaDosagem(db)
 
 
     private fun insereUtente(tabelaUtentes: TabelaUtente, utente: Utente): Long {
@@ -47,6 +48,12 @@ class TesteBaseDados {
 
     private fun insereCargo(tabelaCargo: TabelaCargo, cargo: Cargo): Long {
         val id = tabelaCargo.insert(cargo.toContentValues())
+        assertNotEquals(-1, id)
+        return id
+    }
+
+    private fun insereDosagem(tabelaDosagem: TabelaDosagem, dosagem: Dosagem): Long {
+        val id = tabelaDosagem.insert(dosagem.toContentValues())
         assertNotEquals(-1, id)
         return id
     }
@@ -109,6 +116,21 @@ class TesteBaseDados {
         assertNotNull(cursor)
         assert(cursor!!.moveToNext())
         return Cargo.fromCursor(cursor)
+    }
+
+    private fun getDosagemBD(
+            tabelaDosagem: TabelaDosagem, id: Long  ): Dosagem {
+        val cursor = tabelaDosagem.query(
+                TabelaDosagem.TODOS_CAMPOS,
+                "${BaseColumns._ID}=?",
+                arrayOf(id.toString()),
+                null,
+                null,
+                null
+        )
+        assertNotNull(cursor)
+        assert(cursor!!.moveToNext())
+        return Dosagem.fromCursor(cursor)
     }
 
 
@@ -416,6 +438,18 @@ class TesteBaseDados {
         val CargoBD = getCargoBD(tabelaCargo, cargo.id)
         assertEquals(cargo, CargoBD)
 
+        db.close()
+    }
+
+    @Test
+    fun consegueInserirDosagem(){
+        val db = getBdAdministracaoOpenHelper().writableDatabase
+        val tabelaDosagem = getTabelaDosagem(db)
+        val dosagem = Dosagem(DataAdministracao = 22062021, Dose = 1, IdUtente = 1703826, IdVacina = 1234567)
+
+        dosagem.id = insereDosagem(tabelaDosagem, dosagem)
+        val dosagemBD = getDosagemBD(tabelaDosagem, dosagem.id)
+        assertEquals(dosagem, dosagemBD)
         db.close()
     }
 
