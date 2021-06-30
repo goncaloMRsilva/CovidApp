@@ -38,7 +38,7 @@ class TabelaProfissionalSaude(db: SQLiteDatabase) {
     companion object {
         const val NOME_TABELA = "ProfissionalSaude"
         const val CAMPO_NOME = "NomeProfissional"
-        const val CAMPO_ID_CARGO = "IDCargo"
+        const val CAMPO_ID_CARGO = "IDCargo"        //chave estrangeira
 
         val TODOS_CAMPOS =arrayOf(BaseColumns._ID, CAMPO_NOME, CAMPO_ID_CARGO)
     }

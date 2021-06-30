@@ -444,8 +444,33 @@ class TesteBaseDados {
     @Test
     fun consegueInserirDosagem(){
         val db = getBdAdministracaoOpenHelper().writableDatabase
+
+        val tabelaCargo = getTabelaCargo(db)
+        val cargo = Cargo(funcaoProfissional = "Auxiliar de saude")
+
+        cargo.id = insereCargo(tabelaCargo, cargo)
+
+        val tabelaProfissionalSaude = getTabelaProfissionalSaude(db)
+        val ProfissionalSaude = ProfissionalSaude(NomeProfissional = "Claudia Vieira", IDCargo = cargo.id)
+
+        ProfissionalSaude.id = insereProfissionalSaude(tabelaProfissionalSaude, ProfissionalSaude)
+
+
+        val tabelaUtente = getTabelaUtentes(db)
+        val utente = Utente(NomeUtente= "Goncalo Silva", DataNascimento = 17021999)
+
+        utente.id = insereUtente(tabelaUtente, utente)
+
+
+        val tabelaVacinas = getTabelaVacinas(db);
+        val vacina = Vacina( nome = "AstraZeneca", quantidade = 1000)
+
+        vacina.id = insereVacina(tabelaVacinas, vacina)
+
+
         val tabelaDosagem = getTabelaDosagem(db)
-        val dosagem = Dosagem(DataAdministracao = 22062021, Dose = 1, IdUtente = 1703826, IdVacina = 1234567)
+        val dosagem = Dosagem(DataAdministracao = 22062021, Dose = 1, IdUtente = utente.id, IdVacina = vacina.id, IdProfSaude = ProfissionalSaude.id)
+
 
         dosagem.id = insereDosagem(tabelaDosagem, dosagem)
         val dosagemBD = getDosagemBD(tabelaDosagem, dosagem.id)
@@ -457,7 +482,7 @@ class TesteBaseDados {
     fun consegueAlterarDosagem(){
         val db = getBdAdministracaoOpenHelper().writableDatabase
         val tabelaDosagem = getTabelaDosagem(db);
-        val dosagem = Dosagem(DataAdministracao = 30022021, Dose = 0, IdUtente = 0, IdVacina = 0)
+        val dosagem = Dosagem(DataAdministracao = 30022021, Dose = 0, IdUtente = 0, IdVacina = 0, IdProfSaude = 754749)
 
         dosagem.id = insereDosagem(tabelaDosagem, dosagem)
 
@@ -465,6 +490,7 @@ class TesteBaseDados {
         dosagem.Dose = 2
         dosagem.IdUtente = 1234566
         dosagem.IdVacina = 3660123
+        dosagem.IdProfSaude = 754749
 
         val registosAlterados = tabelaDosagem.update(
                 dosagem.toContentValues(),
@@ -483,7 +509,7 @@ class TesteBaseDados {
     fun consegueApagarDosagem(){
         val db = getBdAdministracaoOpenHelper().writableDatabase
         val tabelaDosagem = getTabelaDosagem(db)
-        val dosagem = Dosagem(DataAdministracao = 30022023, Dose = 7, IdUtente = 1234543, IdVacina = 9898989)
+        val dosagem = Dosagem(DataAdministracao = 30022023, Dose = 7, IdUtente = 1234543, IdVacina = 9898989, IdProfSaude = 567)
 
         dosagem.id = insereDosagem(tabelaDosagem, dosagem)
 
@@ -501,7 +527,7 @@ class TesteBaseDados {
     fun consegueLerDosagem(){
         val db = getBdAdministracaoOpenHelper().writableDatabase
         val tabelaDosagem = getTabelaDosagem(db)
-        val dosagem = Dosagem(DataAdministracao = 30022022, Dose = 4, IdUtente = 1234443, IdVacina = 9892349)
+        val dosagem = Dosagem(DataAdministracao = 30022022, Dose = 4, IdUtente = 1234443, IdVacina = 9892349, IdProfSaude = 345)
 
         dosagem.id = insereDosagem(tabelaDosagem, dosagem)
 
