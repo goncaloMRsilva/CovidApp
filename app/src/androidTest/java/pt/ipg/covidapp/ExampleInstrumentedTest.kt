@@ -531,8 +531,31 @@ class TesteBaseDados {
     @Test
     fun consegueApagarDosagem(){
         val db = getBdAdministracaoOpenHelper().writableDatabase
+
+        val tabelaCargo = getTabelaCargo(db)
+        val cargo = Cargo(funcaoProfissional = "Médico")
+
+        cargo.id = insereCargo(tabelaCargo, cargo)
+
+        val tabelaProfissionalSaude = getTabelaProfissionalSaude(db)
+        val ProfissionalSaude = ProfissionalSaude(NomeProfissional = "José Soares", IDCargo = cargo.id)
+
+        ProfissionalSaude.id = insereProfissionalSaude(tabelaProfissionalSaude, ProfissionalSaude)
+
+
+        val tabelaUtente = getTabelaUtentes(db)
+        val utente = Utente(NomeUtente= "Goncalo Silva", DataNascimento = 17021999)
+
+        utente.id = insereUtente(tabelaUtente, utente)
+
+
+        val tabelaVacinas = getTabelaVacinas(db);
+        val vacina = Vacina( nome = "Moderna", quantidade = 1000)
+
+        vacina.id = insereVacina(tabelaVacinas, vacina)
+
         val tabelaDosagem = getTabelaDosagem(db)
-        val dosagem = Dosagem(DataAdministracao = 30022023, Dose = 7, IdUtente = 1234543, IdVacina = 9898989, IdProfSaude = 567)
+        val dosagem = Dosagem(DataAdministracao = 30022023, Dose = 7, IdUtente = utente.id, IdVacina = vacina.id, IdProfSaude = ProfissionalSaude.id)
 
         dosagem.id = insereDosagem(tabelaDosagem, dosagem)
 
@@ -549,8 +572,31 @@ class TesteBaseDados {
     @Test
     fun consegueLerDosagem(){
         val db = getBdAdministracaoOpenHelper().writableDatabase
+
+        val tabelaCargo = getTabelaCargo(db)
+        val cargo = Cargo(funcaoProfissional = "Auxiliar de saude")
+
+        cargo.id = insereCargo(tabelaCargo, cargo)
+
+        val tabelaProfissionalSaude = getTabelaProfissionalSaude(db)
+        val ProfissionalSaude = ProfissionalSaude(NomeProfissional = "Claudia Vieira", IDCargo = cargo.id)
+
+        ProfissionalSaude.id = insereProfissionalSaude(tabelaProfissionalSaude, ProfissionalSaude)
+
+
+        val tabelaUtente = getTabelaUtentes(db)
+        val utente = Utente(NomeUtente= "Goncalo Silva", DataNascimento = 17021999)
+
+        utente.id = insereUtente(tabelaUtente, utente)
+
+
+        val tabelaVacinas = getTabelaVacinas(db);
+        val vacina = Vacina( nome = "AstraZeneca", quantidade = 1000)
+
+        vacina.id = insereVacina(tabelaVacinas, vacina)
+
         val tabelaDosagem = getTabelaDosagem(db)
-        val dosagem = Dosagem(DataAdministracao = 30022022, Dose = 4, IdUtente = 1234443, IdVacina = 9892349, IdProfSaude = 345)
+        val dosagem = Dosagem(DataAdministracao = 30022022, Dose = 4, IdUtente = utente.id, IdVacina = vacina.id, IdProfSaude = ProfissionalSaude.id)
 
         dosagem.id = insereDosagem(tabelaDosagem, dosagem)
 
