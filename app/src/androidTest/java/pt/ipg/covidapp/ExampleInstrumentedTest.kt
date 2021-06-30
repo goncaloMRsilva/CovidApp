@@ -481,8 +481,31 @@ class TesteBaseDados {
     @Test
     fun consegueAlterarDosagem(){
         val db = getBdAdministracaoOpenHelper().writableDatabase
+
+        val tabelaCargo = getTabelaCargo(db)
+        val cargo = Cargo(funcaoProfissional = "Enfermeiro")
+
+        cargo.id = insereCargo(tabelaCargo, cargo)
+
+        val tabelaProfissionalSaude = getTabelaProfissionalSaude(db)
+        val ProfissionalSaude = ProfissionalSaude(NomeProfissional = "Claudia Vieira", IDCargo = cargo.id)
+
+        ProfissionalSaude.id = insereProfissionalSaude(tabelaProfissionalSaude, ProfissionalSaude)
+
+
+        val tabelaUtente = getTabelaUtentes(db)
+        val utente = Utente(NomeUtente= "Goncalo Silva", DataNascimento = 17021999)
+
+        utente.id = insereUtente(tabelaUtente, utente)
+
+
+        val tabelaVacinas = getTabelaVacinas(db);
+        val vacina = Vacina( nome = "AstraZeneca", quantidade = 1000)
+
+        vacina.id = insereVacina(tabelaVacinas, vacina)
+
         val tabelaDosagem = getTabelaDosagem(db);
-        val dosagem = Dosagem(DataAdministracao = 30022021, Dose = 0, IdUtente = 0, IdVacina = 0, IdProfSaude = 754749)
+        val dosagem = Dosagem(DataAdministracao = 30022021, Dose = 0, IdUtente = utente.id, IdVacina = vacina.id, IdProfSaude = ProfissionalSaude.id)
 
         dosagem.id = insereDosagem(tabelaDosagem, dosagem)
 
