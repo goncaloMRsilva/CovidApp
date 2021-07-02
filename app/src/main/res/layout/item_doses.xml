@@ -21,31 +21,17 @@
         app:layout_constraintHorizontal_bias="0.039"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="João Sousa" />
-
-    <TextView
-        android:id="@+id/textViewIdade"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginLeft="28dp"
-        android:layout_marginTop="4dp"
-        android:paddingBottom="@dimen/margem_campos"
-        android:textAppearance="@style/TextAppearance.AppCompat.Small"
-        android:textColor="#424040"
-        app:layout_constraintStart_toStartOf="@+id/textViewNome"
-        app:layout_constraintTop_toBottomOf="@+id/textViewNome"
-        tools:text="Idade: 66" />
+        tools:text="Gonçalo Silva" />
 
     <TextView
         android:id="@+id/textViewDose"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginRight="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="104dp"
+        android:layout_marginRight="104dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Small"
-        android:textColor="@color/cor_destaque"
+        android:textColor="@color/black"
         android:textColorHint="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -55,13 +41,39 @@
         android:id="@+id/textViewVacina"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:layout_marginLeft="60dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="16dp"
         android:paddingBottom="8dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Small"
         android:textColor="#424040"
-        app:layout_constraintStart_toEndOf="@+id/textViewIdade"
         app:layout_constraintTop_toBottomOf="@+id/textViewNome"
+        tools:layout_editor_absoluteX="16dp"
         tools:text="Vacina: Astrazeneca" />
+
+    <TextView
+        android:id="@+id/textDataAdministracao"
+        android:layout_width="210dp"
+        android:layout_height="24dp"
+        android:text="DataAdministracao: 21/12/2020"
+        tools:layout_editor_absoluteX="176dp"
+        tools:layout_editor_absoluteY="46dp" />
+
+    <TextView
+        android:id="@+id/textViewProfissionalSaude"
+        android:layout_width="234dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="24dp"
+        android:text="Profissional de Saúde: Paulo Pinto"
+        app:layout_constraintTop_toBottomOf="@+id/textViewVacina"
+        tools:layout_editor_absoluteX="16dp" />
+
+    <TextView
+        android:id="@+id/textViewCargo"
+        android:layout_width="114dp"
+        android:layout_height="23dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="24dp"
+        android:text="Cargo: Enfermeiro"
+        app:layout_constraintStart_toEndOf="@+id/textViewProfissionalSaude"
+        app:layout_constraintTop_toBottomOf="@+id/textDataAdministracao" />
 </androidx.constraintlayout.widget.ConstraintLayout>

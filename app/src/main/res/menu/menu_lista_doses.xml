@@ -1,0 +1,32 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="pt.ipg.covidapp.MainActivity">
+    <item
+        android:id="@+id/action_nova_dose"
+        android:icon="@drawable/ic_baseline_add_24"
+        android:title="@string/nova_dose"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_altera_dose"
+        android:icon="@android:drawable/ic_menu_edit"
+        android:title="Alterar Dose"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_altera_vacina"
+        android:title="Alterar Vacina" />
+    <item
+        android:id="@+id/action_altera_data"
+        android:title="Altera Data " />
+    <item
+        android:id="@+id/action_altera_profissionalsaude"
+        android:title="Altera Profissional de Saude" />
+    <item
+        android:id="@+id/action_altera_cargo"
+        android:title="Altera Cargo" />
+    <item
+        android:id="@+id/action_settings"
+        android:orderInCategory="100"
+        android:title="@string/action_settings"
+        app:showAsAction="never" />
+</menu>
