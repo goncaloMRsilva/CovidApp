@@ -3,12 +3,13 @@ package pt.ipg.covidapp
 import android.content.ContentValues
 import android.database.Cursor
 import android.provider.BaseColumns
+import java.util.*
 
-data class Utente(var id: Long = -1, var NomeUtente: String, var DataNascimento: Int)  {
+data class Utente(var id: Long = -1, var NomeUtente: String, var DataNascimento: Date)  {
     fun toContentValues(): ContentValues {
         val valores = ContentValues().apply {
             put(TabelaUtente.CAMPO_NOME, NomeUtente)
-            put(TabelaUtente.CAMPO_DATA_NASCIMENTO, DataNascimento)
+            put(TabelaUtente.CAMPO_DATA_NASCIMENTO, DataNascimento.time)
         }
 
         return valores
@@ -22,9 +23,9 @@ data class Utente(var id: Long = -1, var NomeUtente: String, var DataNascimento:
 
             val id = cursor.getLong(colId)
             val NomeUtente = cursor.getString(colNomeUtente)
-            val DataNascimento = cursor.getInt(colDataNascimento)
+            val DataNascimento = cursor.getLong(colDataNascimento)
 
-            return Utente(id, NomeUtente, DataNascimento)
+            return Utente(id, NomeUtente, Date(DataNascimento))
         }
     }
 }
