@@ -62,7 +62,7 @@ class MainActivity : AppCompatActivity() {
 
             else -> when(menuAtual) {
                 R.menu.menu_lista_utentes -> (DadosApp.fragment as ListaUtentesFragment).processaOpcaoMenu(item)
-                //R.menu.menu_novo_utente -> (DadosApp.fragment as NovoUtenteFragment).processaOpcaoMenu(item)
+                R.menu.menu_novo_utente -> (DadosApp.fragment as NovoUtenteFragment).processaOpcaoMenu(item)
                 //R.menu.menu_edita_utente -> (DadosApp.fragment as EditaUtenteFragment).processaOpcaoMenu(item)
                 //R.menu.menu_apaga_utente -> (DadosApp.fragment as ApagaUtenteFragment).processaOpcaoMenu(item)
                 else -> false
