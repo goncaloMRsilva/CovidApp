@@ -1,0 +1,24 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="pt.ipg.covidapp.MainActivity">
+    <item
+        android:id="@+id/action_novo_utente"
+        android:icon="@drawable/ic_baseline_add_24"
+        android:title="@string/novo_utente"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_editar_utente"
+        android:icon="@android:drawable/ic_menu_edit"
+        android:title="@string/editar_utente"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_apagar_utente"
+        android:title="@string/apagar_utente" />
+    <item
+        android:id="@+id/action_settings"
+        android:orderInCategory="100"
+        android:title="@string/action_settings"
+        app:showAsAction="never" />
+</menu>
+

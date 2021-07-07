@@ -50,6 +50,7 @@ class ListaUtentesFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
             .initLoader(ID_LOADER_MANAGER_UTENTES, null, this)
     }
 
+    /*
     fun navegaNovoUtente() {
         findNavController().navigate(R.id.action_ListaUtentesFragment_to_NovoUtenteFragment)
 
@@ -74,6 +75,8 @@ class ListaUtentesFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
     fun navegaApagarUtente() {
         //todo: navegar para o fragmento para ver o sotck de vacinas
     }
+    */
+
 
     fun processaOpcaoMenu(item: MenuItem): Boolean {
         when (item.itemId) {
@@ -107,7 +110,7 @@ class ListaUtentesFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
     override fun onCreateLoader(id: Int, args: Bundle?): Loader<Cursor> {
         return CursorLoader(
             requireContext(),
-            ContentProviderArmazemVacinas.ENDERECO_UTENTES,
+            ContentProviderCovidApp.ENDERECO_UTENTES,
             TabelaUtentes.TODOS_CAMPOS,
             null, null,
             TabelaUtentes.CAMPO_NOME
