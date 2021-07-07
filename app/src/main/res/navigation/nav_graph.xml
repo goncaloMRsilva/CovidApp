@@ -14,7 +14,11 @@
         android:id="@+id/Lista_Utente_Fragment"
         android:name="pt.ipg.covidapp.ListaUtentesFragment"
         android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_lista_utentes"/>
+        tools:layout="@layout/fragment_lista_utentes">
+        <action
+            android:id="@+id/action_Lista_Utente_Fragment_to_Novo_Utente_Fragment"
+            app:destination="@id/Novo_Utente_Fragment" />
+    </fragment>
     <fragment
         android:id="@+id/Novo_Utente_Fragment"
         android:name="pt.ipg.covidapp.Novo_Utente_Fragment"

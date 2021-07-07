@@ -15,4 +15,9 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <string name="nome">Nome</string>
+    <string name="data_nascimento">Data de Nascimento</string>
+    <string name="preencha_nome">Insira o nome</string>
+    <string name="preencha_data_nascimento">Insira a Data de nascimento</string>
+
 </resources>
