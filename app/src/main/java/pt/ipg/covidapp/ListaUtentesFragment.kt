@@ -52,7 +52,7 @@ class ListaUtentesFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
 
 
     fun navegaNovoUtente() {
-        findNavController().navigate(R.id.action_ListaUtentesFragment_to_NovoUtenteFragment)
+        findNavController().navigate(R.id.action_Lista_Utente_Fragment_to_Novo_Utente_Fragment)
 
     }
 

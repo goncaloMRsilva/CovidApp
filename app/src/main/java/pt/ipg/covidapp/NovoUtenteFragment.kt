@@ -56,7 +56,7 @@ class NovoUtenteFragment : Fragment(){
     }
 
     fun navegaListaUtentes() {
-        findNavController().navigate(R.id.action_NovoUtenteFragment_to_ListaUtentesFragment)
+        findNavController().navigate(R.id.action_Lista_Utente_Fragment_to_Novo_Utente_Fragment)
     }
 
     fun guardar() {
@@ -80,7 +80,7 @@ class NovoUtenteFragment : Fragment(){
              return
          }*/
 
-        val utente = Utente(nome = nome, dataNascimento = Date(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DATE)), dose = 0)
+        val utente = Utente(nomeUtente = nome, dataNascimento = Date(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DATE)), dose = 0)
 
         val uri = activity?.contentResolver?.insert(
             ContentProviderCovidApp.ENDERECO_UTENTES,

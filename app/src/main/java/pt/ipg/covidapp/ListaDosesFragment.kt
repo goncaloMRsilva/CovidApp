@@ -41,7 +41,7 @@ class ListaDosesFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val recyclerViewDoses = view.findViewById<RecyclerView>(R.id.recyclerViewDoses)
+        val recyclerViewDoses = view.findViewById<RecyclerView>(R.id.recyclerViewUtentes)
         adapterDoses = AdapterDoses(this)
         recyclerViewDoses.adapter = adapterDoses
         recyclerViewDoses.layoutManager = LinearLayoutManager(requireContext())

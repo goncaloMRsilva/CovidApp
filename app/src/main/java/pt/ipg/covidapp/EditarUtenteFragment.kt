@@ -46,7 +46,7 @@ class EditarUtenteFragment : Fragment(){
     }
 
     fun navegaListaUtentes() {
-        findNavController().navigate(R.id.action_editarUtenteFragment_to_ListaUtentesFragment)
+        findNavController().navigate(R.id.action_Editar_Utente_Fragment_to_Lista_Utente_Fragment)
     }
 
     fun guardar() {
