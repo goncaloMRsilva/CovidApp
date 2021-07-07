@@ -222,7 +222,7 @@ class TesteBaseDados {
     fun consegueInserirUtentes(){
         val db = getBdAdministracaoOpenHelper().writableDatabase
         val tabelaUtente = getTabelaUtentes(db)
-        val utente = Utente(NomeUtente= "Goncalo Silva", DataNascimento = Date(1998-1900, 5, 12))
+        val utente = Utente(nomeUtente= "Goncalo Silva", dataNascimento = Date(1998-1900, 5, 12))
 
         utente.id = insereUtente(tabelaUtente, utente)
         val utenteBD = getUtenteBD(tabelaUtente, utente.id)
@@ -234,11 +234,11 @@ class TesteBaseDados {
     fun consegueAlterarUtentes(){
         val db = getBdAdministracaoOpenHelper().writableDatabase
         val tabelaUtentes = getTabelaUtentes(db)
-        val utente = Utente(NomeUtente= "?", DataNascimento = Date(1977-1900,2,9))
+        val utente = Utente(nomeUtente= "?", dataNascimento = Date(1977-1900,2,9))
 
         utente.id = insereUtente(tabelaUtentes, utente)
-        utente.NomeUtente= "Adriano Lameiras"
-        utente.DataNascimento= Date(1998-1900, 3, 2)
+        utente.nomeUtente= "Adriano Lameiras"
+        utente.dataNascimento= Date(1998-1900, 3, 2)
         val registosAlterados = tabelaUtentes.update(
                 utente.toContentValues(),
                 "${BaseColumns._ID}=?",
@@ -254,7 +254,7 @@ class TesteBaseDados {
     fun consegueApagarUtentes(){
         val db = getBdAdministracaoOpenHelper().writableDatabase
         val tabelaUtentes = getTabelaUtentes(db)
-        val utente = Utente(NomeUtente= "?", DataNascimento = Date(1980-1900,5,11))
+        val utente = Utente(nomeUtente= "?", dataNascimento = Date(1980-1900,5,11))
 
         utente.id = insereUtente(tabelaUtentes, utente)
 
@@ -272,7 +272,7 @@ class TesteBaseDados {
     fun consegueLerUtentes(){
         val db = getBdAdministracaoOpenHelper().writableDatabase
         val tabelaUtentes = getTabelaUtentes(db)
-        val utente = Utente(NomeUtente= "?", DataNascimento = Date(1978-1900,6,8))
+        val utente = Utente(nomeUtente= "?", dataNascimento = Date(1978-1900,6,8))
 
         utente.id = insereUtente(tabelaUtentes, utente)
 
@@ -458,7 +458,7 @@ class TesteBaseDados {
 
 
         val tabelaUtente = getTabelaUtentes(db)
-        val utente = Utente(NomeUtente= "Goncalo Silva", DataNascimento = Date(1983-1900,4,21))
+        val utente = Utente(nomeUtente= "Goncalo Silva", dataNascimento = Date(1983-1900,4,21))
 
         utente.id = insereUtente(tabelaUtente, utente)
 
@@ -495,7 +495,7 @@ class TesteBaseDados {
 
 
         val tabelaUtente = getTabelaUtentes(db)
-        val utente = Utente(NomeUtente= "Goncalo Silva", DataNascimento = Date(1983-1900,5,13) )
+        val utente = Utente(nomeUtente= "Goncalo Silva", dataNascimento = Date(1983-1900,5,13) )
 
         utente.id = insereUtente(tabelaUtente, utente)
 
@@ -545,7 +545,7 @@ class TesteBaseDados {
 
 
         val tabelaUtente = getTabelaUtentes(db)
-        val utente = Utente(NomeUtente= "Goncalo Silva", DataNascimento = Date(1988-1990,7,9))
+        val utente = Utente(nomeUtente= "Goncalo Silva", dataNascimento = Date(1988-1990,7,9))
 
         utente.id = insereUtente(tabelaUtente, utente)
 
@@ -586,7 +586,7 @@ class TesteBaseDados {
 
 
         val tabelaUtente = getTabelaUtentes(db)
-        val utente = Utente(NomeUtente= "Goncalo Silva", DataNascimento = Date(1967-1990,12,2))
+        val utente = Utente(nomeUtente= "Goncalo Silva", dataNascimento = Date(1967-1990,12,2))
 
         utente.id = insereUtente(tabelaUtente, utente)
 

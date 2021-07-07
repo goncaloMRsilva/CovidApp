@@ -28,12 +28,12 @@
         android:paddingBottom="@dimen/margem_campos"
         android:textAppearance="@style/TextAppearance.AppCompat.Small"
         android:textColor="#424040"
-        app:layout_constraintStart_toEndOf="@+id/textViewTelefone"
+        app:layout_constraintStart_toEndOf="@+id/textViewDataNascimento"
         tools:layout_editor_absoluteY="64dp"
         tools:text="Idade: 22" />
 
     <TextView
-        android:id="@+id/textViewTelefone"
+        android:id="@+id/textViewDataNascimento"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
@@ -44,4 +44,15 @@
         app:layout_constraintStart_toStartOf="@+id/textViewNome"
         tools:layout_editor_absoluteY="64dp"
         tools:text="Data Nascimento: 17/02/1999" />
+
+    <TextView
+        android:id="@+id/textViewDosesAdministradas"
+        android:layout_width="157dp"
+        android:layout_height="21dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:text="TextView"
+        app:layout_constraintStart_toEndOf="@+id/textViewNome"
+        tools:layout_editor_absoluteY="24dp"
+        tools:text="Doses Administradas: 2" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,11 +5,11 @@ import android.database.Cursor
 import android.provider.BaseColumns
 import java.util.*
 
-data class Utente(var id: Long = -1, var NomeUtente: String, var DataNascimento: Date)  {
+data class Utente(var id: Long = -1, var nomeUtente: String, var dataNascimento: Date)  {
     fun toContentValues(): ContentValues {
         val valores = ContentValues().apply {
-            put(TabelaUtente.CAMPO_NOME, NomeUtente)
-            put(TabelaUtente.CAMPO_DATA_NASCIMENTO, DataNascimento.time)
+            put(TabelaUtente.CAMPO_NOME, nomeUtente)
+            put(TabelaUtente.CAMPO_DATA_NASCIMENTO, dataNascimento.time)
         }
 
         return valores
