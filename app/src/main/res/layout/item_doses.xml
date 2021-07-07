@@ -27,9 +27,9 @@
         android:id="@+id/textViewDose"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="104dp"
-        android:layout_marginRight="104dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="96dp"
+        android:layout_marginRight="96dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Small"
         android:textColor="@color/black"
         android:textColorHint="#000000"
@@ -41,39 +41,29 @@
         android:id="@+id/textViewVacina"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="20dp"
         android:paddingBottom="8dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Small"
         android:textColor="#424040"
         app:layout_constraintTop_toBottomOf="@+id/textViewNome"
-        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteX="34dp"
         tools:text="Vacina: Astrazeneca" />
 
     <TextView
         android:id="@+id/textDataAdministracao"
         android:layout_width="210dp"
         android:layout_height="24dp"
-        android:text="DataAdministracao: 21/12/2020"
-        tools:layout_editor_absoluteX="176dp"
-        tools:layout_editor_absoluteY="46dp" />
+        tools:layout_editor_absoluteX="185dp"
+        tools:layout_editor_absoluteY="50dp"
+        tools:text="DataAdministracao: 21/12/2020" />
 
     <TextView
         android:id="@+id/textViewProfissionalSaude"
         android:layout_width="234dp"
         android:layout_height="20dp"
-        android:layout_marginTop="24dp"
-        android:text="Profissional de Saúde: Paulo Pinto"
+        android:layout_marginTop="16dp"
         app:layout_constraintTop_toBottomOf="@+id/textViewVacina"
-        tools:layout_editor_absoluteX="16dp" />
+        tools:layout_editor_absoluteX="81dp"
+        tools:text="Profissional de Saúde: Paulo Pinto" />
 
-    <TextView
-        android:id="@+id/textViewCargo"
-        android:layout_width="114dp"
-        android:layout_height="23dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="24dp"
-        android:text="Cargo: Enfermeiro"
-        app:layout_constraintStart_toEndOf="@+id/textViewProfissionalSaude"
-        app:layout_constraintTop_toBottomOf="@+id/textDataAdministracao" />
 </androidx.constraintlayout.widget.ConstraintLayout>

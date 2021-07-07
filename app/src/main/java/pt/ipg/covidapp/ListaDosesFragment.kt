@@ -109,10 +109,10 @@ class ListaDosesFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
     override fun onCreateLoader(id: Int, args: Bundle?): Loader<Cursor> {
         return CursorLoader(
                 requireContext(),
-                ContentProviderAdministracao.ENDERECO_UTENTES,
-                TabelaDoses.TODOS_CAMPOS,
+                ContentProviderCovidApp.ENDERECO_DOSAGEM,
+                TabelaDosagem.TODOS_CAMPOS,
                 null, null,
-                TabelaDoses.CAMPO_NOME
+                TabelaDosagem.CAMPO_NOME
         )
     }
 

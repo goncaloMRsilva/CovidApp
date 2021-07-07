@@ -10,6 +10,7 @@ import org.junit.runner.RunWith
 
 import org.junit.Assert.*
 import org.junit.Before
+import java.util.*
 
 /**
  * Instrumented test, which will execute on an Android device.
@@ -221,7 +222,7 @@ class TesteBaseDados {
     fun consegueInserirUtentes(){
         val db = getBdAdministracaoOpenHelper().writableDatabase
         val tabelaUtente = getTabelaUtentes(db)
-        val utente = Utente(NomeUtente= "Goncalo Silva", DataNascimento = 17021999)
+        val utente = Utente(NomeUtente= "Goncalo Silva", DataNascimento = Date(1998-1900, 5, 12))
 
         utente.id = insereUtente(tabelaUtente, utente)
         val utenteBD = getUtenteBD(tabelaUtente, utente.id)
@@ -233,11 +234,11 @@ class TesteBaseDados {
     fun consegueAlterarUtentes(){
         val db = getBdAdministracaoOpenHelper().writableDatabase
         val tabelaUtentes = getTabelaUtentes(db)
-        val utente = Utente(NomeUtente= "?", DataNascimento = 0)
+        val utente = Utente(NomeUtente= "?", DataNascimento = Date(1977-1900,2,9))
 
         utente.id = insereUtente(tabelaUtentes, utente)
         utente.NomeUtente= "Adriano Lameiras"
-        utente.DataNascimento= 2051998
+        utente.DataNascimento= Date(1998-1900, 3, 2)
         val registosAlterados = tabelaUtentes.update(
                 utente.toContentValues(),
                 "${BaseColumns._ID}=?",
@@ -253,7 +254,7 @@ class TesteBaseDados {
     fun consegueApagarUtentes(){
         val db = getBdAdministracaoOpenHelper().writableDatabase
         val tabelaUtentes = getTabelaUtentes(db)
-        val utente = Utente(NomeUtente= "?", DataNascimento = 0)
+        val utente = Utente(NomeUtente= "?", DataNascimento = Date(1980-1900,5,11))
 
         utente.id = insereUtente(tabelaUtentes, utente)
 
@@ -271,7 +272,7 @@ class TesteBaseDados {
     fun consegueLerUtentes(){
         val db = getBdAdministracaoOpenHelper().writableDatabase
         val tabelaUtentes = getTabelaUtentes(db)
-        val utente = Utente(NomeUtente= "?", DataNascimento = 0)
+        val utente = Utente(NomeUtente= "?", DataNascimento = Date(1978-1900,6,8))
 
         utente.id = insereUtente(tabelaUtentes, utente)
 
@@ -457,7 +458,7 @@ class TesteBaseDados {
 
 
         val tabelaUtente = getTabelaUtentes(db)
-        val utente = Utente(NomeUtente= "Goncalo Silva", DataNascimento = 17021999)
+        val utente = Utente(NomeUtente= "Goncalo Silva", DataNascimento = Date(1983-1900,4,21))
 
         utente.id = insereUtente(tabelaUtente, utente)
 
@@ -469,7 +470,7 @@ class TesteBaseDados {
 
 
         val tabelaDosagem = getTabelaDosagem(db)
-        val dosagem = Dosagem(DataAdministracao = 22062021, Dose = 1, IdUtente = utente.id, IdVacina = vacina.id, IdProfSaude = ProfissionalSaude.id)
+        val dosagem = Dosagem(DataAdministracao = Date(1972-1900,4,7), Dose = 1, IdUtente = utente.id, IdVacina = vacina.id, IdProfSaude = ProfissionalSaude.id)
 
 
         dosagem.id = insereDosagem(tabelaDosagem, dosagem)
@@ -494,7 +495,7 @@ class TesteBaseDados {
 
 
         val tabelaUtente = getTabelaUtentes(db)
-        val utente = Utente(NomeUtente= "Goncalo Silva", DataNascimento = 17021999)
+        val utente = Utente(NomeUtente= "Goncalo Silva", DataNascimento = Date(1983-1900,5,13) )
 
         utente.id = insereUtente(tabelaUtente, utente)
 
@@ -505,11 +506,11 @@ class TesteBaseDados {
         vacina.id = insereVacina(tabelaVacinas, vacina)
 
         val tabelaDosagem = getTabelaDosagem(db);
-        val dosagem = Dosagem(DataAdministracao = 30022021, Dose = 0, IdUtente = utente.id, IdVacina = vacina.id, IdProfSaude = ProfissionalSaude.id)
+        val dosagem = Dosagem(DataAdministracao = Date(1987-1900,14,8), Dose = 0, IdUtente = utente.id, IdVacina = vacina.id, IdProfSaude = ProfissionalSaude.id)
 
         dosagem.id = insereDosagem(tabelaDosagem, dosagem)
 
-        dosagem.DataAdministracao = 30032021
+        dosagem.DataAdministracao = Date(1972-1900,4,18)
         dosagem.Dose = 2
         dosagem.IdUtente = 1234566
         dosagem.IdVacina = 3660123
@@ -544,7 +545,7 @@ class TesteBaseDados {
 
 
         val tabelaUtente = getTabelaUtentes(db)
-        val utente = Utente(NomeUtente= "Goncalo Silva", DataNascimento = 17021999)
+        val utente = Utente(NomeUtente= "Goncalo Silva", DataNascimento = Date(1988-1990,7,9))
 
         utente.id = insereUtente(tabelaUtente, utente)
 
@@ -555,7 +556,7 @@ class TesteBaseDados {
         vacina.id = insereVacina(tabelaVacinas, vacina)
 
         val tabelaDosagem = getTabelaDosagem(db)
-        val dosagem = Dosagem(DataAdministracao = 30022023, Dose = 7, IdUtente = utente.id, IdVacina = vacina.id, IdProfSaude = ProfissionalSaude.id)
+        val dosagem = Dosagem(DataAdministracao = Date(1978-1900,11,11), Dose = 7, IdUtente = utente.id, IdVacina = vacina.id, IdProfSaude = ProfissionalSaude.id)
 
         dosagem.id = insereDosagem(tabelaDosagem, dosagem)
 
@@ -585,7 +586,7 @@ class TesteBaseDados {
 
 
         val tabelaUtente = getTabelaUtentes(db)
-        val utente = Utente(NomeUtente= "Goncalo Silva", DataNascimento = 17021999)
+        val utente = Utente(NomeUtente= "Goncalo Silva", DataNascimento = Date(1967-1990,12,2))
 
         utente.id = insereUtente(tabelaUtente, utente)
 
@@ -596,7 +597,7 @@ class TesteBaseDados {
         vacina.id = insereVacina(tabelaVacinas, vacina)
 
         val tabelaDosagem = getTabelaDosagem(db)
-        val dosagem = Dosagem(DataAdministracao = 30022022, Dose = 4, IdUtente = utente.id, IdVacina = vacina.id, IdProfSaude = ProfissionalSaude.id)
+        val dosagem = Dosagem(DataAdministracao = Date(1976-1900, 23,8), Dose = 4, IdUtente = utente.id, IdVacina = vacina.id, IdProfSaude = ProfissionalSaude.id)
 
         dosagem.id = insereDosagem(tabelaDosagem, dosagem)
 

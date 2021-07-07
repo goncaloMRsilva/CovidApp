@@ -22,7 +22,6 @@ class AdapterDoses(val fragment: ListaDosesFragment) : RecyclerView.Adapter<Adap
         private val textViewVacina = itemView.findViewById<TextView>(R.id.textViewVacina)
         private val textViewDataAdministracao = itemView.findViewById<TextView>(R.id.textDataAdministracao)
         private val textViewProfissionalSaude = itemView.findViewById<TextView>(R.id.textViewProfissionalSaude)
-        private val textViewCargo = itemView.findViewById<TextView>(R.id.textViewCargo)
 
         private lateinit var dose: Dosagem
 
@@ -36,7 +35,6 @@ class AdapterDoses(val fragment: ListaDosesFragment) : RecyclerView.Adapter<Adap
             val vacina = dosagem.IdVacina
             val dataAdministracao = dosagem.DataAdministracao
             //val profissionalSaude =
-            //val cargo =
 
 
             //textViewNome.text = dosagem.nome
@@ -44,7 +42,6 @@ class AdapterDoses(val fragment: ListaDosesFragment) : RecyclerView.Adapter<Adap
             textViewVacina.text = "Vacina: $vacina"
             textViewDataAdministracao.text = "Data Administracao: $dataAdministracao"
             //textViewProfissionalSaude.text = "ProfissionalSaude: $profissionalSaude"
-            //textViewCargo.text= "Cargo: $cargo"
         }
 
         /**
