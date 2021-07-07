@@ -17,6 +17,7 @@ import pt.ipg.covidapp.databinding.FragmentListaDosesBinding
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
+
 class ListaDosesFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
 
     private var _binding: FragmentListaDosesBinding? = null
@@ -30,7 +31,7 @@ class ListaDosesFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        DadosApp.listaDosesFragment = this
+        DadosApp.fragment = this
 
         _binding = FragmentListaDosesBinding.inflate(inflater, container, false)
         return binding.root
@@ -48,7 +49,7 @@ class ListaDosesFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
                 .initLoader(ID_LOADER_MANAGER_DOSES, null, this)
     }
 
-    /*
+
     fun navegaNovoUtente() {
         //findNavController().navigate(R.id.action_ListaLivrosFragment_to_NovoLivroFragment)
         //todo: navegar para o fragmento de novo utente
@@ -62,33 +63,22 @@ class ListaDosesFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
         //todo: navegar para o fragmento para nova dose
     }
 
-    fun navegaVerDosesUtente() {
-        //todo: navegar para o fragmento para ver as doses do utente
-    }
-
-    fun navegaVerDadosUtente() {
-        //todo: navegar para o fragmento para ver todas as doses
-    }
-
     fun navegaApagarUtente() {
         //todo: navegar para o fragmento para ver o sotck de vacinas
     }
-        */
-    /*
+
+
     fun processaOpcaoMenu(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.action_novo_utente -> navegaNovoUtente()
             R.id.action_editar_utente -> navegaEditarUtente()
             R.id.action_nova_dose -> navegaNovaDose()
-            R.id.action_ver_doses_utente -> navegaVerDosesUtente()
-            R.id.action_ver_dados_utente -> navegaVerDadosUtente()
             R.id.action_apagar_utente -> navegaApagarUtente()
             else -> return false
         }
 
         return true
     }
-    */
 
 
     override fun onDestroyView() {
@@ -106,6 +96,7 @@ class ListaDosesFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
      * @param args Any arguments supplied by the caller.
      * @return Return a new Loader instance that is ready to start loading.
      */
+
     override fun onCreateLoader(id: Int, args: Bundle?): Loader<Cursor> {
         return CursorLoader(
                 requireContext(),

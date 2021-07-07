@@ -1,13 +1,14 @@
 package pt.ipg.covidapp
 
+import androidx.fragment.app.Fragment
+
 class DadosApp {
     companion object {
         lateinit var activity: MainActivity
 
-        lateinit var listaDosesFragment: ListaDosesFragment
+        lateinit var fragment: Fragment
         var dosesSelecionado : Dosagem? = null
 
-        lateinit var listaUtentesFragment: ListaUtentesFragment
         var utenteSelecionado : Utente? = null
     }
 }
