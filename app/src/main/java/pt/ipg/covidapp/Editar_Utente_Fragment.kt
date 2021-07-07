@@ -1,59 +1,113 @@
 package pt.ipg.covidapp
 
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+import android.widget.CalendarView
+import android.widget.EditText
+import android.widget.Toast
+import androidx.navigation.fragment.findNavController
+import com.google.android.material.snackbar.Snackbar
+import java.util.*
 
 /**
- * A simple [Fragment] subclass.
- * Use the [Editar_Utente_Fragment.newInstance] factory method to
- * create an instance of this fragment.
+ * A simple [Fragment] subclass as the second destination in the navigation.
  */
-class Editar_Utente_Fragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+class EditarUtenteFragment : Fragment(){
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+
+
+    private lateinit var editTextNome: EditText
+    private lateinit var calendarViewDataNascimento: CalendarView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        DadosApp.fragment = this
+        (activity as MainActivity).menuAtual = R.menu.menu_editar_utente
+
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_editar__utente_, container, false)
+        return inflater.inflate(R.layout.fragment_editar_utente, container, false)
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment Editar_Utente_Fragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            Editar_Utente_Fragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        editTextNome = view.findViewById(R.id.editTextNome)
+        calendarViewDataNascimento = view.findViewById(R.id.calendarViewDataNascimento)
+
+        editTextNome.setText(DadosApp.utenteSelecionado!!.nomeUtente)
+        calendarViewDataNascimento.setDate(DadosApp.utenteSelecionado!!.dataNascimento.time)
     }
+
+    fun navegaListaUtentes() {
+        findNavController().navigate(R.id.action_editarUtenteFragment_to_ListaUtentesFragment)
+    }
+
+    fun guardar() {
+        val nome = editTextNome.text.toString()
+        if (nome.isEmpty()) {
+            editTextNome.setError(getString(R.string.preencha_nome))
+            editTextNome.requestFocus()
+            return
+        }
+
+
+        val dataNascimento = calendarViewDataNascimento.date
+        /* if (dataNascimento == 0) {
+             editTextDiaNascimento.setError(getString(R.string.preencha_data_nascimento))
+             editTextDiaNascimento.requestFocus()
+             return
+         }*/
+
+        val utente = DadosApp.utenteSelecionado!!
+        utente.nomeUtente = nome
+        utente.dataNascimento = Date(dataNascimento)
+
+        val uriUtente = Uri.withAppendedPath(
+            ContentProviderCovidApp.ENDERECO_UTENTES,
+            utente.id.toString()
+        )
+
+        val registos = activity?.contentResolver?.update(
+            uriUtente,
+            utente.toContentValues(),
+            null,
+            null
+        )
+
+        if (registos != 1) {
+            Toast.makeText(
+                requireContext(),
+                R.string.erro_alterar_utente,
+                Toast.LENGTH_LONG
+            ).show()
+            return
+        }
+
+        Toast.makeText(
+            requireContext(),
+            R.string.utente_guardado_sucesso,
+            Toast.LENGTH_LONG
+        ).show()
+        navegaListaUtentes()
+    }
+
+
+    fun processaOpcaoMenu(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.action_guardar_edita_utente -> guardar()
+            R.id.action_cancelar_edita_utente -> navegaListaUtentes()
+            else -> return false
+        }
+
+        return true
+    }
+
+
 }

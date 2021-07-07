@@ -20,6 +20,10 @@
     <string name="preencha_nome">Insira o nome</string>
     <string name="preencha_data_nascimento">Insira a Data de nascimento</string>
 
+    <string name="erro_apagar_utente">Erro ao apagar utente</string>
+    <string name="erro_alterar_utente">Erro ao alterar utente</string>
+    <string name="utente_guardado_sucesso">Utente guardado com sucesso</string>
+
     <string name="guardar">Guardar</string>
     <string name="cancelar">Cancelar</string>
 

@@ -23,9 +23,7 @@ class NovoUtenteFragment : Fragment(){
     private var _binding: FragmentNovoUtenteBinding? = null
 
     private lateinit var editTextNome: EditText
-    private lateinit var editTextTelefone: EditText
-    private lateinit var editTextEmail: EditText
-    private lateinit var editTextMorada: EditText
+    //
     private lateinit var calendarViewDataNascimento: CalendarView
 
 
@@ -48,9 +46,7 @@ class NovoUtenteFragment : Fragment(){
         super.onViewCreated(view, savedInstanceState)
 
         editTextNome = view.findViewById(R.id.editTextNome)
-        editTextTelefone = view.findViewById(R.id.editTextTelefone)
-        editTextEmail = view.findViewById(R.id.editTextEmail)
-        editTextMorada = view.findViewById(R.id.editTextMorada)
+        //
         calendarViewDataNascimento = view.findViewById(R.id.calendarViewDataNascimento)
     }
 
@@ -71,13 +67,7 @@ class NovoUtenteFragment : Fragment(){
             return
         }
 
-        val telefone = editTextTelefone.text.toString()
-        if (telefone.isEmpty()) {
-            editTextTelefone.setError(getString(R.string.preencha_telefone))
-            editTextTelefone.requestFocus()
-            return
-        }
-
+        //
 
 
         val dataNascimentoMillis = calendarViewDataNascimento.date
@@ -90,10 +80,10 @@ class NovoUtenteFragment : Fragment(){
              return
          }*/
 
-        val utente = Utente(nome = nome, telefone = telefone, email = email, morada = morada, dataNascimento = Date(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DATE)), dose = 0)
+        val utente = Utente(nome = nome, dataNascimento = Date(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DATE)), dose = 0)
 
         val uri = activity?.contentResolver?.insert(
-            ContentProviderArmazemVacinas.ENDERECO_UTENTES,
+            ContentProviderCovidApp.ENDERECO_UTENTES,
             utente.toContentValues()
         )
 
