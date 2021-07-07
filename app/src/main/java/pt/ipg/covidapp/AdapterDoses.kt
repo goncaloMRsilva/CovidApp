@@ -58,7 +58,7 @@ class AdapterDoses(val fragment: ListaDosesFragment) : RecyclerView.Adapter<Adap
             selecionado = this
             itemView.setBackgroundResource(R.color.cor_selecao)
             DadosApp.dosesSelecionado = dose
-            DadosApp.activity.atualizaMenuListaDoses(true)
+           // DadosApp.activity.atualizaMenuListaDoses(true)
         }
 
         private fun desSeleciona() {

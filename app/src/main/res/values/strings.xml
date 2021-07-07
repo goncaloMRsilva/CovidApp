@@ -1,4 +1,5 @@
 <resources>
+    <string name="versao">Administração das vacinas v. 1.0</string>
     <string name="app_name">CovidApp</string>
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
@@ -11,5 +12,7 @@
     <string name="editar_utente">Editar Utente</string>
     <string name="nova_dose">Nova Dose</string>
     <string name="apagar_utente">Apagar o Utente</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

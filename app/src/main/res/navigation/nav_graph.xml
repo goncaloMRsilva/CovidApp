@@ -3,26 +3,25 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    app:startDestination="@id/Lista_Doses_Fragment">
 
     <fragment
-        android:id="@+id/FirstFragment"
+        android:id="@+id/Lista_Doses_Fragment"
         android:name="pt.ipg.covidapp.ListaDosesFragment"
         android:label="@string/first_fragment_label"
-        tools:layout="@layout/ListaUtentes">
-
-        <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
-    </fragment>
+        tools:layout="@layout/ListaUtentes"/>
     <fragment
-        android:id="@+id/SecondFragment"
+        android:id="@+id/Lista_Utente_Fragment"
         android:name="pt.ipg.covidapp.ListaUtentesFragment"
         android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_lista_utentes">
-
+        tools:layout="@layout/fragment_lista_utentes"/>
+    <fragment
+        android:id="@+id/Novo_Utente_Fragment"
+        android:name="pt.ipg.covidapp.Novo_Utente_Fragment"
+        android:label="fragment_novo__utente_"
+        tools:layout="@layout/fragment_novo__utente_" >
         <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
+            android:id="@+id/action_novo_Utente_Fragment_to_SecondFragment"
+            app:destination="@id/Lista_Utente_Fragment" />
     </fragment>
 </navigation>

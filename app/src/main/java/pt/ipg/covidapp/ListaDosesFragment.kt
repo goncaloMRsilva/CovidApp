@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import pt.ipg.covidapp.databinding.FragmentListaDosesBinding
 
+
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
@@ -103,7 +104,7 @@ class ListaDosesFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
                 ContentProviderCovidApp.ENDERECO_DOSAGEM,
                 TabelaDosagem.TODOS_CAMPOS,
                 null, null,
-                TabelaDosagem.CAMPO_NOME
+                TabelaDosagem.CAMPO_NOME        //para depois chamar o utente pelo nome
         )
     }
 
