@@ -11,7 +11,7 @@
     <string name="novo_utente">Novo Utente</string>
     <string name="editar_utente">Editar Utente</string>
     <string name="nova_dose">Nova Dose</string>
-    <string name="apagar_utente">Apagar o Utente</string>
+    <string name="eliminar_utente">Eliminar o Utente</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
@@ -20,10 +20,10 @@
     <string name="preencha_nome">Insira o nome</string>
     <string name="preencha_data_nascimento">Insira a Data de nascimento</string>
 
-    <string name="erro_apagar_utente">Erro ao apagar utente</string>
-    <string name="erro_alterar_utente">Erro ao alterar utente</string>
-    <string name="utente_guardado_sucesso">Utente guardado com sucesso</string>
+    <string name="erro_eliminar_utente">Erro ao apagar utente</string>
+    <string name="erro_editar_utente">Erro ao alterar utente</string>
     <string name="erro_inserir_utente">Erro ao inserir utente</string>
+    <string name="utente_guardado_sucesso">Utente guardado com sucesso</string>
 
     <string name="guardar">Guardar</string>
     <string name="cancelar">Cancelar</string>

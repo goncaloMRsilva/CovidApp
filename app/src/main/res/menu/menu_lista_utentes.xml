@@ -14,7 +14,7 @@
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_apagar_utente"
-        android:title="@string/apagar_utente" />
+        android:title="@string/eliminar_utente" />
     <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"

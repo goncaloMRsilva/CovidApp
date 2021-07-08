@@ -84,7 +84,7 @@ class EditarUtenteFragment : Fragment(){
         if (registos != 1) {
             Toast.makeText(
                 requireContext(),
-                R.string.erro_alterar_utente,
+                R.string.erro_eliminar_utente,
                 Toast.LENGTH_LONG
             ).show()
             return

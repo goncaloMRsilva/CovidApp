@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import pt.ipg.covidapp.databinding.FragmentListaDosesBinding
 
-
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
