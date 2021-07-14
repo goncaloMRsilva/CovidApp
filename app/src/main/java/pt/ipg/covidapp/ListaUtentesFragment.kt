@@ -12,7 +12,6 @@ import androidx.loader.content.CursorLoader
 import androidx.loader.content.Loader
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import pt.ipg.covidapp.databinding.FragmentListaUtentesBinding
 import androidx.navigation.fragment.findNavController
 
 /**
@@ -21,12 +20,7 @@ import androidx.navigation.fragment.findNavController
 
 class ListaUtentesFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
 
-    private var _binding: FragmentListaUtentesBinding? = null
     private var adapterUtentes : AdapterUtentes? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,8 +29,7 @@ class ListaUtentesFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
         DadosApp.fragment = this
         (activity as MainActivity).menuAtual = R.menu.menu_lista_utentes
 
-        _binding = FragmentListaUtentesBinding.inflate(inflater, container, false)
-        return binding.root
+        return inflater.inflate(R.layout.fragment_lista_utentes, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -58,7 +51,7 @@ class ListaUtentesFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
     }
 
     fun navegaEditarUtente() {
-        //todo: navegar para o fragmento da edição de um utente
+        findNavController().navigate(R.id.action_Lista_Utente_Fragment_to_Editar_Utente_Fragment)
     }
 
     fun navegaNovaDose() {
@@ -69,7 +62,6 @@ class ListaUtentesFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
     fun navegaApagarUtente() {
         //todo: navegar para o fragmento para ver o sotck de vacinas
     }
-
 
 
     fun processaOpcaoMenu(item: MenuItem): Boolean {
@@ -86,7 +78,6 @@ class ListaUtentesFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        _binding = null
     }
 
     /**

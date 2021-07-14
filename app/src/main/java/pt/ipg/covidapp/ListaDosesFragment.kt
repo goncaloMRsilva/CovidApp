@@ -12,7 +12,6 @@ import androidx.loader.content.CursorLoader
 import androidx.loader.content.Loader
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import pt.ipg.covidapp.databinding.FragmentListaDosesBinding
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -20,21 +19,15 @@ import pt.ipg.covidapp.databinding.FragmentListaDosesBinding
 
 class ListaDosesFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
 
-    private var _binding: FragmentListaDosesBinding? = null
     private var adapterDoses : AdapterDoses? = null
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
-
     override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         DadosApp.fragment = this
 
-        _binding = FragmentListaDosesBinding.inflate(inflater, container, false)
-        return binding.root
+        return inflater.inflate(R.layout.fragment_lista_doses, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -46,7 +39,7 @@ class ListaDosesFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
         recyclerViewDoses.layoutManager = LinearLayoutManager(requireContext())
 
         LoaderManager.getInstance(this)
-                .initLoader(ID_LOADER_MANAGER_DOSES, null, this)
+            .initLoader(ID_LOADER_MANAGER_DOSES, null, this)
     }
 
 
@@ -83,7 +76,6 @@ class ListaDosesFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        _binding = null
     }
 
     /**
@@ -99,11 +91,11 @@ class ListaDosesFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
 
     override fun onCreateLoader(id: Int, args: Bundle?): Loader<Cursor> {
         return CursorLoader(
-                requireContext(),
-                ContentProviderCovidApp.ENDERECO_DOSAGEM,
-                TabelaDosagem.TODOS_CAMPOS,
-                null, null,
-                TabelaDosagem.CAMPO_NOME        //para depois chamar o utente pelo nome
+            requireContext(),
+            ContentProviderCovidApp.ENDERECO_DOSAGEM,
+            TabelaDosagem.TODOS_CAMPOS,
+            null, null,
+            TabelaDosagem.CAMPO_DOSAGEM        //para depois chamar o utente pelo nome
         )
     }
 

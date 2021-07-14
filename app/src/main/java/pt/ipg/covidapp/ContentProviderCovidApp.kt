@@ -209,12 +209,12 @@ class ContentProviderCovidApp : ContentProvider(){
     }
 
     companion object{
-        private const val AUTHORITY = "pt.ipg.trabalhofinal"
-        private const val VACINAS = "vacinas"
-        private const val UTENTES = "utentes"
-        private const val PROFISSIONALSAUDE = "profissionalsaude"
-        private const val CARGO = "cargo"
-        private const val DOSAGEM = "dosagem"
+        private const val AUTHORITY = "pt.ipg.covidapp"
+        private const val VACINAS = "Vacinas"
+        private const val UTENTES = "Utente"
+        private const val PROFISSIONALSAUDE = "ProfissionalSaude"
+        private const val CARGO = "Cargo"
+        private const val DOSAGEM = "Dosagem"
 
         private const val URI_VACINAS = 100
         private const val URI_VACINA_ESPECIFICO = 101

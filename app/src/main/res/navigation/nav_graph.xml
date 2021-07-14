@@ -36,9 +36,8 @@
     </fragment>
     <fragment
         android:id="@+id/EditarUtenteFragment"
-        android:name="pt.ipg.covidapp.Editar_Utente_Fragment"
-        android:label="fragment_editar__utente_"
-        tools:layout="@layout/fragment_editar_utente" >
+        android:name="pt.ipg.covidapp.EditarUtenteFragment"
+        android:label="fragment_editar__utente_">
         <action
             android:id="@+id/action_Editar_Utente_Fragment_to_Lista_Utente_Fragment"
             app:destination="@id/ListaUtenteFragment" />

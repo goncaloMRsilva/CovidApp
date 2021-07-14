@@ -10,12 +10,12 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
-import pt.ipg.covidapp.databinding.ActivityMainBinding
+
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
-    private lateinit var binding: ActivityMainBinding
+
     private lateinit var menu: Menu
 
     var menuAtual = R.menu.menu_lista_utentes
@@ -27,12 +27,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setContentView(R.layout.activity_main)
+        setSupportActionBar(findViewById(R.id.toolbar))
 
-        setSupportActionBar(binding.toolbar)
-
-        val navController = findNavController(R.id.nav_host_fragment_content_main)
+        val navController = findNavController(R.id.nav_host_fragment)
         appBarConfiguration = AppBarConfiguration(navController.graph)
         setupActionBarWithNavController(navController, appBarConfiguration)
 
@@ -63,8 +61,8 @@ class MainActivity : AppCompatActivity() {
             else -> when(menuAtual) {
                 R.menu.menu_lista_utentes -> (DadosApp.fragment as ListaUtentesFragment).processaOpcaoMenu(item)
                 R.menu.menu_novo_utente -> (DadosApp.fragment as NovoUtenteFragment).processaOpcaoMenu(item)
-                //R.menu.menu_edita_utente -> (DadosApp.fragment as EditaUtenteFragment).processaOpcaoMenu(item)
-                //R.menu.menu_apaga_utente -> (DadosApp.fragment as ApagaUtenteFragment).processaOpcaoMenu(item)
+                R.menu.menu_editar_utente -> (DadosApp.fragment as EditarUtenteFragment).processaOpcaoMenu(item)
+                //R.menu.menu_eliminar_utente -> (DadosApp.fragment as EliminarUtenteFragment).processaOpcaoMenu(item)
                 else -> false
             }
         }
@@ -72,7 +70,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onSupportNavigateUp(): Boolean {
-        val navController = findNavController(R.id.nav_host_fragment_content_main)
+        val navController = findNavController(R.id.nav_host_fragment)
         return navController.navigateUp(appBarConfiguration)
                 || super.onSupportNavigateUp()
     }

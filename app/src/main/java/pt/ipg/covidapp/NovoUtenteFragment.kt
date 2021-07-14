@@ -11,7 +11,6 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
-import pt.ipg.covidapp.databinding.FragmentNovoUtenteBinding
 import java.util.*
 
 
@@ -20,16 +19,10 @@ import java.util.*
  */
 class NovoUtenteFragment : Fragment(){
 
-    private var _binding: FragmentNovoUtenteBinding? = null
-
     private lateinit var editTextNome: EditText
     //
     private lateinit var calendarViewDataNascimento: CalendarView
 
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,25 +31,23 @@ class NovoUtenteFragment : Fragment(){
         DadosApp.fragment = this
         (activity as MainActivity).menuAtual = R.menu.menu_novo_utente
 
-        _binding = FragmentNovoUtenteBinding.inflate(inflater, container, false)
-        return binding.root
+        return inflater.inflate(R.layout.fragment_novo_utente, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         editTextNome = view.findViewById(R.id.editTextNome)
-        //
+
         calendarViewDataNascimento = view.findViewById(R.id.calendarViewDataNascimento)
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
-        _binding = null
     }
 
     fun navegaListaUtentes() {
-        findNavController().navigate(R.id.action_Lista_Utente_Fragment_to_Novo_Utente_Fragment)
+        findNavController().navigate(R.id.action_novo_Utente_Fragment_to_SecondFragment)
     }
 
     fun guardar() {
@@ -67,7 +58,6 @@ class NovoUtenteFragment : Fragment(){
             return
         }
 
-        //
 
 
         val dataNascimentoMillis = calendarViewDataNascimento.date
@@ -80,7 +70,7 @@ class NovoUtenteFragment : Fragment(){
              return
          }*/
 
-        val utente = Utente(nomeUtente = nome, dataNascimento = Date(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DATE)), dose = 0)
+        val utente = Utente(nomeUtente = nome, dataNascimento = Date(dataNascimentoMillis))
 
         val uri = activity?.contentResolver?.insert(
             ContentProviderCovidApp.ENDERECO_UTENTES,
@@ -113,6 +103,5 @@ class NovoUtenteFragment : Fragment(){
 
         return true
     }
-
 
 }

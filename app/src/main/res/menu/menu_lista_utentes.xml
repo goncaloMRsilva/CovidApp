@@ -16,6 +16,9 @@
         android:id="@+id/action_apagar_utente"
         android:title="@string/eliminar_utente" />
     <item
+        android:id="@+id/action_nova_dose"
+        android:title="Nova Dose" />
+    <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"
         android:title="@string/action_settings"
