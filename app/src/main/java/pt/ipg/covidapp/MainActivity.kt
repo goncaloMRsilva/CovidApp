@@ -44,6 +44,8 @@ class MainActivity : AppCompatActivity() {
 
         if(menuAtual == R.menu.menu_lista_utentes) {
             atualizaMenuListaUtentes(false)
+        }else if (menuAtual == R.menu.menu_ver_vacinas){
+            atualizaMenuVerVacinas(false)
         }
         return true
     }
@@ -63,6 +65,7 @@ class MainActivity : AppCompatActivity() {
                 R.menu.menu_novo_utente -> (DadosApp.fragment as NovoUtenteFragment).processaOpcaoMenu(item)
                 R.menu.menu_editar_utente -> (DadosApp.fragment as EditarUtenteFragment).processaOpcaoMenu(item)
                 R.menu.menu_eliminar_utente -> (DadosApp.fragment as EliminarUtenteFragment).processaOpcaoMenu(item)
+                R.menu.menu_ver_vacinas -> (DadosApp.fragment as VerVacinasFragment).processaOpcaoMenu(item)
                 else -> false
             }
         }

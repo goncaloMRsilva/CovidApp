@@ -21,19 +21,15 @@ class VerVacinasFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
 
     private var adapterVacinas : AdapterVacinas? = null
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         DadosApp.fragment = this
-        (activity as MainActivity).menuAtual = R.menu.menu_lista_vacinas
+        (activity as MainActivity).menuAtual = R.menu.menu_ver_vacinas
 
-        _binding = FragmentListaVacinasBinding.inflate(inflater, container, false)
-        return binding.root
+        return inflater.inflate(R.layout.fragment_ver_vacinas, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -57,20 +53,15 @@ class VerVacinasFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
         //findNavController().navigate(R.id.action_ListaUtentesFragment_to_editarUtenteFragment)
     }
 
-    fun navegaAumentarStock() {
+    fun navegaAlterarQuantidade() {
         //findNavController().navigate(R.id.action_ListaUtentesFragment_to_verDadosUtenteFragment)
-    }
-
-    fun navegaMenuPrincipal() {
-        findNavController().navigate(R.id.action_listaVacinasFragment_to_menuPrincipalFragment)
     }
 
     fun processaOpcaoMenu(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.action_nova_vacina -> navegaNovaVacina()
             R.id.action_editar_vacina -> navegaEditarVacina()
-            R.id.action_aumentar_stock -> navegaAumentarStock()
-            R.id.action_menu_princial -> navegaMenuPrincipal()
+            R.id.action_alterar_quantidade -> navegaAlterarQuantidade()
             else -> return false
         }
 
@@ -79,7 +70,6 @@ class VerVacinasFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        _binding = null
     }
 
     /**
@@ -95,10 +85,10 @@ class VerVacinasFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
     override fun onCreateLoader(id: Int, args: Bundle?): Loader<Cursor> {
         return CursorLoader(
             requireContext(),
-            ContentProviderArmazemVacinas.ENDERECO_VACINAS,
+            ContentProviderCovidApp.ENDERECO_VACINAS,
             TabelaVacinas.TODOS_CAMPOS,
             null, null,
-            TabelaVacinas.CAMPO_NOME_VACINA
+            TabelaVacinas.CAMPO_NOME
         )
     }
 
