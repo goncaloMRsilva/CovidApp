@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textViewVac"
+        android:layout_width="47dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textColor="#673AB7"
+        android:textColorLink="@color/purple_200"
+        android:textSize="24sp"
+        tools:text="Pfizer" />
+
+    <TextView
+        android:id="@+id/textViewQuantidade"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textColor="#673AB7"
+        tools:text="Quantidade: 50 000" />
+</LinearLayout>

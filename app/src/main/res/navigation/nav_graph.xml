@@ -51,4 +51,9 @@
             android:id="@+id/action_eliminarUtenteFragment_to_Lista_Utente_Fragment"
             app:destination="@id/ListaUtenteFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/VerVacinasFragment"
+        android:name="pt.ipg.covidapp.VerVacinasFragment"
+        android:label="fragment_ver_vacinas"
+        tools:layout="@layout/fragment_ver_vacinas" />
 </navigation>

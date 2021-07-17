@@ -80,4 +80,9 @@ class MainActivity : AppCompatActivity() {
         menu.findItem(R.id.action_nova_dose).setVisible(mostraBotoesUtente)
         menu.findItem(R.id.action_apagar_utente).setVisible(mostraBotoesUtente)
     }
+
+    fun atualizaMenuVerVacinas(mostraBotoesVacina : Boolean) {
+        menu.findItem(R.id.action_editar_vacina).setVisible(mostraBotoesVacina)
+        menu.findItem(R.id.action_alterar_quantidade).setVisible(mostraBotoesVacina)
+    }
 }
