@@ -59,6 +59,9 @@
         <action
             android:id="@+id/action_VerVacinasFragment_to_NovaVacinaFragment"
             app:destination="@id/NovaVacinaFragment" />
+        <action
+            android:id="@+id/action_VerVacinasFragment_to_editarVacinaFragment"
+            app:destination="@id/editarVacinaFragment" />
     </fragment>
     <fragment
         android:id="@+id/NovaVacinaFragment"
@@ -67,6 +70,15 @@
         tools:layout="@layout/fragment_nova_vacina" >
         <action
             android:id="@+id/action_NovaVacinaFragment_to_VerVacinasFragment"
+            app:destination="@id/VerVacinasFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editarVacinaFragment"
+        android:name="pt.ipg.covidapp.EditarVacinaFragment"
+        android:label="fragment_editar_vacina"
+        tools:layout="@layout/fragment_editar_vacina" >
+        <action
+            android:id="@+id/action_editarVacinaFragment_to_VerVacinasFragment"
             app:destination="@id/VerVacinasFragment" />
     </fragment>
 </navigation>
