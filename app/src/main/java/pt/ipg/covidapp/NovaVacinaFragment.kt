@@ -28,7 +28,7 @@ class NovaVacinaFragment : Fragment(){
         savedInstanceState: Bundle?
     ): View? {
         DadosApp.fragment = this
-        (activity as MainActivity).menuAtual = R.menu.menu_ver_vacinas
+        (activity as MainActivity).menuAtual = R.menu.menu_nova_vacina
 
         return inflater.inflate(R.layout.fragment_nova_vacina, container, false)
     }

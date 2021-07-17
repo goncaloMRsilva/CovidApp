@@ -45,8 +45,7 @@ class VerVacinasFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
     }
 
     fun navegaNovaVacina() {
-        //findNavController().navigate(R.id.action_ListaUtentesFragment_to_NovoUtenteFragment)
-
+        findNavController().navigate(R.id.action_VerVacinasFragment_to_NovaVacinaFragment)
     }
 
     fun navegaEditarVacina() {
