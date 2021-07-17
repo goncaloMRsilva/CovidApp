@@ -60,7 +60,7 @@ class ListaUtentesFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
 
 
     fun navegaApagarUtente() {
-        //todo: navegar para o fragmento para ver o sotck de vacinas
+        findNavController().navigate(R.id.action_ListaUtenteFragment_to_EliminarUtenteFragment)
     }
 
 

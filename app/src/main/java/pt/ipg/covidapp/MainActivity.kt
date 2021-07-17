@@ -62,7 +62,7 @@ class MainActivity : AppCompatActivity() {
                 R.menu.menu_lista_utentes -> (DadosApp.fragment as ListaUtentesFragment).processaOpcaoMenu(item)
                 R.menu.menu_novo_utente -> (DadosApp.fragment as NovoUtenteFragment).processaOpcaoMenu(item)
                 R.menu.menu_editar_utente -> (DadosApp.fragment as EditarUtenteFragment).processaOpcaoMenu(item)
-                //R.menu.menu_eliminar_utente -> (DadosApp.fragment as EliminarUtenteFragment).processaOpcaoMenu(item)
+                R.menu.menu_eliminar_utente -> (DadosApp.fragment as EliminarUtenteFragment).processaOpcaoMenu(item)
                 else -> false
             }
         }

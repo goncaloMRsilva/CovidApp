@@ -1,59 +1,91 @@
 package pt.ipg.covidapp
 
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+import android.widget.TextView
+import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 
 /**
  * A simple [Fragment] subclass.
- * Use the [EliminarUtenteFragment.newInstance] factory method to
+ * Use the [ApagaUtenteFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class EliminarUtenteFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+class EliminarUtenteFragment : Fragment(){
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private lateinit var textViewNome: TextView
+    private lateinit var textViewDoses: TextView
+    private lateinit var textViewDataNascimento: TextView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
+        DadosApp.fragment = this
+        (activity as MainActivity).menuAtual = R.menu.menu_eliminar_utente
+
+        //Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_eliminar_utente, container, false)
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment EliminarUtenteFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            EliminarUtenteFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        textViewNome = view.findViewById(R.id.textViewNomeApaga)
+        textViewDoses = view.findViewById(R.id.textViewDosesApaga)
+        textViewDataNascimento = view.findViewById(R.id.textViewDataNascimentoApaga)
+
+        val utente = DadosApp.utenteSelecionado!!
+        textViewNome.setText(utente.nomeUtente)
+        textViewDoses.setText(utente.dose.toString())
+        textViewDataNascimento.setText("${utente.dataNascimento.day}/${utente.dataNascimento.month+1}/${utente.dataNascimento.year+1900}")
+    }
+
+    fun navegaListaUtentes() {
+        findNavController().navigate(R.id.action_eliminarUtenteFragment_to_Lista_Utente_Fragment)
+    }
+
+    fun apaga() {
+        val uriUtente = Uri.withAppendedPath(
+            ContentProviderCovidApp.ENDERECO_UTENTES,
+            DadosApp.utenteSelecionado!!.id.toString()
+        )
+
+        val registos = activity?.contentResolver?.delete(
+            uriUtente,
+            null,
+            null
+        )
+
+        if (registos != 1) {
+            Toast.makeText(
+                requireContext(),
+                R.string.erro_eliminar_utente,
+                Toast.LENGTH_LONG
+            ).show()
+            return
+        }
+
+        Toast.makeText(
+            requireContext(),
+            R.string.utente_eliminado_sucesso,
+            Toast.LENGTH_LONG
+        ).show()
+        navegaListaUtentes()
+    }
+
+    fun processaOpcaoMenu(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.action_confirma_apagar_utente -> apaga()
+            R.id.action_cancelar_apagar_utente -> navegaListaUtentes()
+            else -> return false
+        }
+
+        return true
     }
 }

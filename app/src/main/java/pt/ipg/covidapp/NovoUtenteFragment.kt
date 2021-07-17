@@ -70,7 +70,7 @@ class NovoUtenteFragment : Fragment(){
              return
          }*/
 
-        val utente = Utente(nomeUtente = nome, dataNascimento = Date(dataNascimentoMillis))
+        val utente = Utente(nomeUtente = nome, dataNascimento = Date(dataNascimentoMillis), dose = 2)
 
         val uri = activity?.contentResolver?.insert(
             ContentProviderCovidApp.ENDERECO_UTENTES,
