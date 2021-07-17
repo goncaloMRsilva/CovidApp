@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/ListaUtenteFragment">
+    app:startDestination="@id/VerVacinasFragment">
 
     <fragment
         android:id="@+id/Lista_Doses_Fragment"
@@ -55,5 +55,18 @@
         android:id="@+id/VerVacinasFragment"
         android:name="pt.ipg.covidapp.VerVacinasFragment"
         android:label="fragment_ver_vacinas"
-        tools:layout="@layout/fragment_ver_vacinas" />
+        tools:layout="@layout/fragment_ver_vacinas" >
+        <action
+            android:id="@+id/action_VerVacinasFragment_to_NovaVacinaFragment"
+            app:destination="@id/NovaVacinaFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/NovaVacinaFragment"
+        android:name="pt.ipg.covidapp.NovaVacinaFragment"
+        android:label="fragment_nova_vacina"
+        tools:layout="@layout/fragment_nova_vacina" >
+        <action
+            android:id="@+id/action_NovaVacinaFragment_to_VerVacinasFragment"
+            app:destination="@id/VerVacinasFragment" />
+    </fragment>
 </navigation>

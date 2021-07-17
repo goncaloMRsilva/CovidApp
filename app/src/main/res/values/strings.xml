@@ -34,4 +34,16 @@
     <string name="editar_vacina">Editar Vacina</string>
     <string name="nova_vacina">Nova Vacina</string>
 
+    <string name="menu_principal_fragment_label">Menu Principal</string>
+    <string name="nova_vacina_fragment_label">Nova Vacina</string>
+    <string name="editar_vacina_fragment_label">Editar Vacina</string>
+    <string name="nome_da_vacina">Nome da vacina</string>
+    <string name="quantidade">Quantidade</string>
+
+    <string name="preencha_nome_vacina">Preencha nome vacina</string>
+    <string name="preencha_quantidade">Preencha quantidade</string>
+
+    <string name="erro_inserir_vacina">Erro na inserção</string>
+    <string name="vacina_guardada_sucesso">Erro a guardar</string>
+
 </resources>
