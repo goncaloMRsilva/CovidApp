@@ -58,5 +58,7 @@
     <string name="profiss_o">Profissão</string>
     <string name="erro_inserir_nome">Erro ao inserir nome</string>
     <string name="cargo_guardado_sucesso">Cargo guardado com sucesso</string>
+    <string name="erro_alterar_profissional_saude">Erro alterar o profissional de saude</string>
+    <string name="profissional_saude_guardado_sucesso">Profissional de saude guardado com sucesso</string>
 
 </resources>
