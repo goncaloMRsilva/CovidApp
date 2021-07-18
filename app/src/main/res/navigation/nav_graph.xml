@@ -120,6 +120,9 @@
         <action
             android:id="@+id/action_ProfissionalSaudeFragment_to_CriarCargoFragment"
             app:destination="@id/CriarCargoFragment" />
+        <action
+            android:id="@+id/action_ProfissionalSaudeFragment_to_CriarProfissionalSaudeFragment"
+            app:destination="@id/CriarProfissionalSaudeFragment" />
     </fragment>
     <fragment
         android:id="@+id/CriarCargoFragment"
@@ -128,6 +131,15 @@
         tools:layout="@layout/fragment_criar_cargo" >
         <action
             android:id="@+id/action_CriarCargoFragment_to_ProfissionalSaudeFragment"
+            app:destination="@id/ProfissionalSaudeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/CriarProfissionalSaudeFragment"
+        android:name="pt.ipg.covidapp.CriarProfissionalSaudeFragment"
+        android:label="fragment_criar_profissional_saude"
+        tools:layout="@layout/fragment_criar_profissional_saude" >
+        <action
+            android:id="@+id/action_CriarProfissionalSaudeFragment_to_ProfissionalSaudeFragment"
             app:destination="@id/ProfissionalSaudeFragment" />
     </fragment>
 </navigation>

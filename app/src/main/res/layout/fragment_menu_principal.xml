@@ -12,11 +12,11 @@
         android:layout_height="51dp"
         android:layout_marginEnd="128dp"
         android:layout_marginRight="128dp"
+        android:text="CovidApp"
         android:textColor="#E61010"
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:layout_editor_absoluteY="103dp"
-        tools:text="CovidApp" />
+        tools:layout_editor_absoluteY="103dp" />
 
     <Button
         android:id="@+id/buttonUtente"
