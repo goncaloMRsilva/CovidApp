@@ -13,8 +13,12 @@
         android:title="@string/editar_profissional_saude"
         app:showAsAction="ifRoom" />
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/action_criar_cargo"
         android:orderInCategory="100"
+        android:title="@string/criar_cargo" />
+    <item
+        android:id="@+id/action_settings"
+        android:orderInCategory="101"
         android:title="@string/action_settings"
         app:showAsAction="never" />
 </menu>

@@ -45,7 +45,11 @@ class ProfissionalSaudeFragment : Fragment(), LoaderManager.LoaderCallbacks<Curs
     }
 
     fun navegaNovoProfissionalSaude() {
-        //findNavController().navigate(R.id.action_VerVacinasFragment_to_NovaVacinaFragment)
+        //findNavController().navigate(R.id.action_ProfissionalSaudeFragment_to_MenuPrincipalFragment)
+    }
+
+    fun navegaCriarCargo(){
+        //
     }
 
     fun navegaEditarProfissionalSaude() {
@@ -57,6 +61,7 @@ class ProfissionalSaudeFragment : Fragment(), LoaderManager.LoaderCallbacks<Curs
         when (item.itemId) {
             R.id.action_novo_profissional_saude -> navegaNovoProfissionalSaude()
             R.id.action_editar_profissional_saude -> navegaEditarProfissionalSaude()
+            R.id.action_criar_cargo -> navegaCriarCargo()
             else -> return false
         }
 

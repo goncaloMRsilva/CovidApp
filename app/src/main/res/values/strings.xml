@@ -54,5 +54,6 @@
     <string name="novo_cargo">Novo cargo</string>
     <string name="novo_profissional_saude">novo_profissional_saude</string>
     <string name="editar_profissional_saude">editar_profissional_saude</string>
+    <string name="criar_cargo">Criar cargo</string>
 
 </resources>
