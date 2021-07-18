@@ -45,6 +45,8 @@ class MainActivity : AppCompatActivity() {
             atualizaMenuListaUtentes(false)
         }else if (menuAtual == R.menu.menu_ver_vacinas){
             atualizaMenuVerVacinas(false)
+        }else if (menuAtual == R.menu.menu_profissionalsaude){
+            atualizaMenuProfissionalSaude(false)
         }
         return true
     }
@@ -69,6 +71,8 @@ class MainActivity : AppCompatActivity() {
                 R.menu.menu_editar_vacina -> (DadosApp.fragment as EditarVacinaFragment).processaOpcaoMenu(item)
                 R.menu.menu_profissionalsaude -> (DadosApp.fragment as ProfissionalSaudeFragment).processaOpcaoMenu(item)
                 R.menu.menu_novo_cargo -> (DadosApp.fragment as CriarCargoFragment).processaOpcaoMenu(item)
+                R.menu.menu_editar_profissionalsaude -> (DadosApp.fragment as EditarProfissionalSaudeFragment).processaOpcaoMenu(item)
+                R.menu.menu_criar_profissionalsaude -> (DadosApp.fragment as CriarProfissionalSaudeFragment).processaOpcaoMenu(item)
                 else -> false
             }
         }

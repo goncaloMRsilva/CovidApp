@@ -51,7 +51,7 @@ class EditarProfissionalSaudeFragment : Fragment(), LoaderManager.LoaderCallback
         editTextN.setText(DadosApp.profissionalSaudeSelecionado!!.NomeProfissional)
     }
 
-    fun navegaEditarProfissionalSaude() {
+    fun navegaProfissionalSaude() {
         findNavController().navigate(R.id.action_EditarProfissionalSaudeFragment_to_ProfissionalSaudeFragment)
     }
 
@@ -71,7 +71,7 @@ class EditarProfissionalSaudeFragment : Fragment(), LoaderManager.LoaderCallback
         ProfissionalSaude.IDCargo = idCargo
 
         val uriProfissionalSaude = Uri.withAppendedPath(
-            ContentProviderCovidApp.ENDERECO_CARGO,
+            ContentProviderCovidApp.ENDERECO_PROFISSIONALSAUDE,
             ProfissionalSaude.id.toString()
         )
 
@@ -96,13 +96,13 @@ class EditarProfissionalSaudeFragment : Fragment(), LoaderManager.LoaderCallback
             R.string.profissional_saude_guardado_sucesso,
             Toast.LENGTH_LONG
         ).show()
-        navegaEditarProfissionalSaude()
+        navegaProfissionalSaude()
     }
 
     fun processaOpcaoMenu(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.action_guardar_novo_profissionalsaude -> guardar()
-            R.id.action_cancelar_novo_profissionalsaude -> navegaEditarProfissionalSaude()
+            R.id.action_cancelar_novo_profissionalsaude -> navegaProfissionalSaude()
             else -> return false
         }
 

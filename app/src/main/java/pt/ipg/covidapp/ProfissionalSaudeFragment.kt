@@ -45,7 +45,7 @@ class ProfissionalSaudeFragment : Fragment(), LoaderManager.LoaderCallbacks<Curs
     }
 
     fun navegaNovoProfissionalSaude() {
-        //findNavController().navigate(R.id.action_ProfissionalSaudeFragment_to_MenuPrincipalFragment)
+        findNavController().navigate(R.id.action_ProfissionalSaudeFragment_to_CriarProfissionalSaudeFragment)
     }
 
     fun navegaCriarCargo(){
@@ -53,7 +53,7 @@ class ProfissionalSaudeFragment : Fragment(), LoaderManager.LoaderCallbacks<Curs
     }
 
     fun navegaEditarProfissionalSaude() {
-        //findNavController().navigate(R.id.action_VerVacinasFragment_to_editarVacinaFragment)
+        findNavController().navigate(R.id.action_ProfissionalSaudeFragment_to_EditarProfissionalSaudeFragment)
     }
 
 

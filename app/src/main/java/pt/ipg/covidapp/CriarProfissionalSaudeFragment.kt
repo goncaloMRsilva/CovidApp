@@ -69,7 +69,7 @@ class CriarProfissionalSaudeFragment : Fragment(), LoaderManager.LoaderCallbacks
         val ProfissionalSaude = ProfissionalSaude(NomeProfissional = nomeP, IDCargo = IdCargo)
 
         val uri = activity?.contentResolver?.insert(
-            ContentProviderCovidApp.ENDERECO_CARGO,
+            ContentProviderCovidApp.ENDERECO_PROFISSIONALSAUDE,
             ProfissionalSaude.toContentValues()
         )
 
