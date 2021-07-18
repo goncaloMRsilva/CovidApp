@@ -1,7 +1,6 @@
 package pt.ipg.covidapp
 
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -87,6 +86,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun atualizaMenuVerVacinas(mostraBotoesVacina : Boolean) {
-        menu.findItem(R.id.action_editar_vacina).setVisible(mostraBotoesVacina)
+        menu.findItem(R.id.action_editar_profissional_saude).setVisible(mostraBotoesVacina)
     }
 }

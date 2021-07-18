@@ -137,7 +137,7 @@
         android:id="@+id/CriarProfissionalSaudeBlankFragment"
         android:name="pt.ipg.covidapp.CriarProfissionalSaudeBlankFragment"
         android:label="fragment_criar_profissional_saude_blank"
-        tools:layout="@layout/fragment_criar_profissional_saude_blank" >
+        tools:layout="@layout/fragment_criar_profissional_saude" >
         <action
             android:id="@+id/action_criarProfissionalSaudeBlankFragment_to_ProfissionalSaudeFragment"
             app:destination="@id/ProfissionalSaudeFragment" />

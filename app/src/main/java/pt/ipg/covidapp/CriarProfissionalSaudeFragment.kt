@@ -34,7 +34,7 @@ class CriarProfissionalSaudeBlankFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_criar_profissional_saude_blank, container, false)
+        return inflater.inflate(R.layout.fragment_criar_profissional_saude, container, false)
     }
 
     companion object {

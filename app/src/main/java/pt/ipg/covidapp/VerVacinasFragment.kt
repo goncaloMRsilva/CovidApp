@@ -58,8 +58,8 @@ class VerVacinasFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
 
     fun processaOpcaoMenu(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.action_nova_vacina -> navegaNovaVacina()
-            R.id.action_editar_vacina -> navegaEditarVacina()
+            R.id.action_novo_profissional_saude -> navegaNovaVacina()
+            R.id.action_editar_profissional_saude -> navegaEditarVacina()
             else -> return false
         }
 

@@ -12,5 +12,7 @@ class DadosApp {
         var utenteSelecionado : Utente? = null
 
         var vacinaSelecionada : Vacina? = null
+
+        var profissionalSaudeSelecionado : ProfissionalSaude? = null
     }
 }

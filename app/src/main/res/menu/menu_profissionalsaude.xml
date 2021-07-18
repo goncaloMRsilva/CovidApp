@@ -5,12 +5,12 @@
     <item
         android:id="@+id/action_novo_profissional_saude"
         android:icon="@drawable/ic_baseline_add_24"
-        android:title="@string/nova_vacina"
+        android:title="@string/novo_profissional_saude"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_editar_profissional_saude"
         android:icon="@android:drawable/ic_menu_edit"
-        android:title="@string/editar_vacina"
+        android:title="@string/editar_profissional_saude"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_settings"
