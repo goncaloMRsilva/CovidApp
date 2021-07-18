@@ -26,12 +26,12 @@ class AdapterProfissionalSaude(val fragment: ProfissionalSaudeFragment) : Recycl
         }
 
         fun atualizaProfissionalSaude(profissionalSaude: ProfissionalSaude) {
-            this.profissionalSaude = ProfissionalSaude()
-            val cargo =  profissionalSaude.cargo
+            this.profissionalSaude = profissionalSaude
+            val cargo =  profissionalSaude.NomeCargo
 
-            textViewNomeProfissionalSaude.text = profissionalSaude.nome
-            val quantidadeString = "Quantidade: $quantidade"
-            textViewStock.text = quantidadeString
+            textViewNomeProfissionalSaude.text = profissionalSaude.NomeProfissional
+
+            textViewCargo.text = "Cargo: $cargo"
         }
 
         /**
@@ -47,7 +47,7 @@ class AdapterProfissionalSaude(val fragment: ProfissionalSaudeFragment) : Recycl
         private fun seleciona() {
             selecionado = this
             itemView.setBackgroundResource(R.color.cor_selecao)
-            DadosApp.ProfissionalSaude = profissionalSaude
+            DadosApp.profissionalSaudeSelecionado = profissionalSaude
             DadosApp.activity.atualizaMenuProfissionalSaude(true)
         }
 

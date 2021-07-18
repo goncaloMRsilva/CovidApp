@@ -45,11 +45,11 @@ class ProfissionalSaudeFragment : Fragment(), LoaderManager.LoaderCallbacks<Curs
     }
 
     fun navegaNovoProfissionalSaude() {
-        findNavController().navigate(R.id.action_VerVacinasFragment_to_NovaVacinaFragment)
+        //findNavController().navigate(R.id.action_VerVacinasFragment_to_NovaVacinaFragment)
     }
 
     fun navegaEditarProfissionalSaude() {
-        findNavController().navigate(R.id.action_VerVacinasFragment_to_editarVacinaFragment)
+        //findNavController().navigate(R.id.action_VerVacinasFragment_to_editarVacinaFragment)
     }
 
 
