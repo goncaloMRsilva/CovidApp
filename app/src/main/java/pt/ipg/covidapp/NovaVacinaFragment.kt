@@ -36,7 +36,7 @@ class NovaVacinaFragment : Fragment(){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        editTextNomeVacina = view.findViewById(R.id.editTextNomeVacina)
+        editTextNomeVacina = view.findViewById(R.id.editTextCriarCargo)
         editTextQnt = view.findViewById(R.id.editTextQnt)
 
     }

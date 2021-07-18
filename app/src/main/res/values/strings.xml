@@ -45,9 +45,12 @@
     <string name="erro_inserir_vacina">Erro na inserção</string>
     <string name="vacina_guardada_sucesso">Erro a guardar</string>
     <string name="erro_editar_vacina">Erro ao editar vacina</string>
+    <string name="erro_inserir_cargo">Erro ao inserir cargo</string>
+    <string name="novo_cargo_guardado_sucesso">Novo cargo guardado com sucesso</string>
     <string name="doses">Doses</string>
     <string name="vacinas">Vacinas</string>
     <string name="profissional_de_sa_de">Profissional de Saúde</string>
     <string name="utente">Utente</string>
+    <string name="novo_cargo">Novo cargo</string>
 
 </resources>
