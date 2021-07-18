@@ -51,13 +51,13 @@ class TabelaProfissionalSaude(db: SQLiteDatabase) {
             if (i > 0) colunas += ","
 
             colunas += if (i == posColNomeCargo) {
-                "${TabelaProfissionalSaude.NOME_TABELA}.${TabelaProfissionalSaude.CAMPO_NOME} AS $CAMPO_EXTERNO_NOME_CARGO"
+                "${TabelaCargo.NOME_TABELA}.${TabelaCargo.CAMPO_FUNCAO} AS $CAMPO_EXTERNO_NOME_CARGO"
             } else {
                 "${NOME_TABELA}.${columns[i]}"
             }
         }
 
-        val tabelas = "$NOME_TABELA INNER JOIN ${TabelaProfissionalSaude.NOME_TABELA} ON ${TabelaProfissionalSaude.NOME_TABELA}.${BaseColumns._ID}=$CAMPO_ID_CARGO"
+        val tabelas = "$NOME_TABELA INNER JOIN ${TabelaCargo.NOME_TABELA} ON ${TabelaCargo.NOME_TABELA}.${BaseColumns._ID}=$CAMPO_ID_CARGO"
 
         var sql = "SELECT $colunas FROM $tabelas"
 

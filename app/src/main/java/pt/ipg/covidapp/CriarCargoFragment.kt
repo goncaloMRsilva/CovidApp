@@ -19,7 +19,7 @@ import java.util.*
  */
 class CriarCargoFragment : Fragment(){
 
-    private lateinit var editTextNome: EditText
+    private lateinit var editTextCriarCargo: EditText
 
 
     override fun onCreateView(
@@ -35,7 +35,7 @@ class CriarCargoFragment : Fragment(){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        editTextNome = view.findViewById(R.id.editTextNome)
+        editTextCriarCargo = view.findViewById(R.id.editTextCriarCargo)
 
     }
 
@@ -48,10 +48,10 @@ class CriarCargoFragment : Fragment(){
     }
 
     fun guardar() {
-        val nome = editTextNome.text.toString()
+        val nome = editTextCriarCargo.text.toString()
         if (nome.isEmpty()) {
-            editTextNome.setError(getString(R.string.preencha_nome))
-            editTextNome.requestFocus()
+            editTextCriarCargo.setError(getString(R.string.preencha_nome))
+            editTextCriarCargo.requestFocus()
             return
         }
 
@@ -64,7 +64,7 @@ class CriarCargoFragment : Fragment(){
 
         if (uri == null) {
             Snackbar.make(
-                editTextNome,
+                editTextCriarCargo,
                 getString(R.string.erro_inserir_cargo),
                 Snackbar.LENGTH_LONG
             ).show()

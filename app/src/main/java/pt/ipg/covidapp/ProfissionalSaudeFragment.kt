@@ -49,7 +49,7 @@ class ProfissionalSaudeFragment : Fragment(), LoaderManager.LoaderCallbacks<Curs
     }
 
     fun navegaCriarCargo(){
-        //
+        findNavController().navigate(R.id.action_ProfissionalSaudeFragment_to_CriarCargoFragment)
     }
 
     fun navegaEditarProfissionalSaude() {
