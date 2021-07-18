@@ -52,5 +52,6 @@
     <string name="profissional_de_sa_de">Profissional de Saúde</string>
     <string name="utente">Utente</string>
     <string name="novo_cargo">Novo cargo</string>
+    <string name="textview">TextView</string>
 
 </resources>

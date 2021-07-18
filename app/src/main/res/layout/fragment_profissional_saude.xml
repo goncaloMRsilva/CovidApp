@@ -5,24 +5,4 @@
     android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProfissionalSaudeFragment">
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="380dp"
-        android:layout_height="28dp"
-        android:textSize="24sp"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="16dp"
-        tools:text="Nome: André" />
-
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="376dp"
-        android:layout_height="31dp"
-        android:text="TextView"
-        android:textSize="24sp"
-        tools:layout_editor_absoluteX="17dp"
-        tools:layout_editor_absoluteY="71dp"
-        tools:text="Profissão: Enfermeiro" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+    tools:context=".ProfissionalSaudeFragment"/>
