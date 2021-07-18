@@ -44,7 +44,7 @@ class CriarCargoFragment : Fragment(){
     }
 
     fun navegaListaProfissionalSaude() {
-        findNavController().navigate(R.id.action_novo_Utente_Fragment_to_SecondFragment)
+        findNavController().navigate(R.id.action_CriarCargoFragment_to_ProfissionalSaudeFragment)
     }
 
     fun guardar() {
@@ -56,7 +56,7 @@ class CriarCargoFragment : Fragment(){
         }
 
 
-
+        val cargo = Cargo(funcaoProfissional = nome)
         val uri = activity?.contentResolver?.insert(
             ContentProviderCovidApp.ENDERECO_CARGO,
             cargo.toContentValues()

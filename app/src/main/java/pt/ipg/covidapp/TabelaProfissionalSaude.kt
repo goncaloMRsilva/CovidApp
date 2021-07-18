@@ -32,14 +32,54 @@ class TabelaProfissionalSaude(db: SQLiteDatabase) {
             having: String?,
             orderBy: String?
     ): Cursor? {
-        return db.query(TabelaProfissionalSaude.NOME_TABELA, columns, selection, selectionArgs, groupBy, having, orderBy)
+        val ultimaColuna = columns.size - 1
+
+        var posColNomeCargo = -1 // -1 indica que a coluna não foi pedida
+        for (i in 0..ultimaColuna) {
+            if (columns[i] == CAMPO_EXTERNO_NOME_CARGO) {
+                posColNomeCargo = i
+                break
+            }
+        }
+
+        if (posColNomeCargo == -1) {
+            return db.query(TabelaProfissionalSaude.NOME_TABELA, columns, selection, selectionArgs, groupBy, having, orderBy)
+        }
+
+        var colunas = ""
+        for (i in 0..ultimaColuna) {
+            if (i > 0) colunas += ","
+
+            colunas += if (i == posColNomeCargo) {
+                "${TabelaProfissionalSaude.NOME_TABELA}.${TabelaProfissionalSaude.CAMPO_NOME} AS $CAMPO_EXTERNO_NOME_CARGO"
+            } else {
+                "${NOME_TABELA}.${columns[i]}"
+            }
+        }
+
+        val tabelas = "$NOME_TABELA INNER JOIN ${TabelaProfissionalSaude.NOME_TABELA} ON ${TabelaProfissionalSaude.NOME_TABELA}.${BaseColumns._ID}=$CAMPO_ID_CARGO"
+
+        var sql = "SELECT $colunas FROM $tabelas"
+
+        if (selection != null) sql += " WHERE $selection"
+
+        if (groupBy != null) {
+            sql += " GROUP BY $groupBy"
+            if (having != null) " HAVING $having"
+        }
+
+        if (orderBy != null) sql += " ORDER BY $orderBy"
+
+        return db.rawQuery(sql, selectionArgs)
+
     }
 
     companion object {
         const val NOME_TABELA = "ProfissionalSaude"
         const val CAMPO_NOME = "NomeProfissional"
         const val CAMPO_ID_CARGO = "IDCargo"        //chave estrangeira
+        const val CAMPO_EXTERNO_NOME_CARGO = "NomeCargo"
 
-        val TODOS_CAMPOS =arrayOf(BaseColumns._ID, CAMPO_NOME, CAMPO_ID_CARGO)
+        val TODOS_CAMPOS =arrayOf(BaseColumns._ID, CAMPO_NOME, CAMPO_ID_CARGO, CAMPO_EXTERNO_NOME_CARGO)
     }
 }
