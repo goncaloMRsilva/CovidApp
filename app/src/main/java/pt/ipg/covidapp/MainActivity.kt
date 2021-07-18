@@ -88,6 +88,5 @@ class MainActivity : AppCompatActivity() {
 
     fun atualizaMenuVerVacinas(mostraBotoesVacina : Boolean) {
         menu.findItem(R.id.action_editar_vacina).setVisible(mostraBotoesVacina)
-        menu.findItem(R.id.action_alterar_quantidade).setVisible(mostraBotoesVacina)
     }
 }

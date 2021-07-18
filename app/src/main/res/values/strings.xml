@@ -30,7 +30,6 @@
     <string name="cancelar">Cancelar</string>
 
     <string name="menu_principal">Menu Principal</string>
-    <string name="alterar_quantidade">Alterar a quantidade das vacinas</string>
     <string name="editar_vacina">Editar Vacina</string>
     <string name="nova_vacina">Nova Vacina</string>
 
@@ -46,5 +45,9 @@
     <string name="erro_inserir_vacina">Erro na inserção</string>
     <string name="vacina_guardada_sucesso">Erro a guardar</string>
     <string name="erro_editar_vacina">Erro ao editar vacina</string>
+    <string name="doses">Doses</string>
+    <string name="vacinas">Vacinas</string>
+    <string name="profissional_de_sa_de">Profissional de Saúde</string>
+    <string name="utente">Utente</string>
 
 </resources>

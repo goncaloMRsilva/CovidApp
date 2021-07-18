@@ -13,9 +13,6 @@
         android:title="@string/editar_vacina"
         app:showAsAction="ifRoom" />
     <item
-        android:id="@+id/action_alterar_quantidade"
-        android:title="@string/alterar_quantidade" />
-    <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"
         android:title="@string/action_settings"

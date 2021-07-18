@@ -60,7 +60,6 @@ class VerVacinasFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
         when (item.itemId) {
             R.id.action_nova_vacina -> navegaNovaVacina()
             R.id.action_editar_vacina -> navegaEditarVacina()
-            R.id.action_alterar_quantidade -> navegaAlterarQuantidade()
             else -> return false
         }
 

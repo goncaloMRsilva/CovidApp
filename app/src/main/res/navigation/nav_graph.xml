@@ -81,4 +81,9 @@
             android:id="@+id/action_editarVacinaFragment_to_VerVacinasFragment"
             app:destination="@id/VerVacinasFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/MenuPrincipalFragment"
+        android:name="pt.ipg.covidapp.MenuPrincipalFragment"
+        android:label="fragment_menu_principal"
+        tools:layout="@layout/fragment_menu_principal" />
 </navigation>
