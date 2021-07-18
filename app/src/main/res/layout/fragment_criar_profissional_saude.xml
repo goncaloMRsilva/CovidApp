@@ -5,18 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".NovoLivroFragment" >
+    tools:context=".CriarProfissionalSaudeFragment">
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="@dimen/margem_ecran">
+        android:layout_margin="@dimen/margem_ecra">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editTextTitulo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Nome"
+            android:hint="@string/nome"
             android:inputType="textLongMessage|textAutoComplete" />
 
         <TextView
@@ -24,7 +24,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margem_campos"
-            android:text="Profissão" />
+            android:text="@string/profiss_o" />
 
         <Spinner
             android:id="@+id/spinnerCargos"
