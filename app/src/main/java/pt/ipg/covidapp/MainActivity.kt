@@ -94,4 +94,5 @@ class MainActivity : AppCompatActivity() {
     fun atualizaMenuProfissionalSaude(mostraBotoesVacina : Boolean) {
         menu.findItem(R.id.action_editar_profissional_saude).setVisible(mostraBotoesVacina)
     }
+
 }

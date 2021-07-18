@@ -55,7 +55,8 @@
     <string name="novo_profissional_saude">novo_profissional_saude</string>
     <string name="editar_profissional_saude">editar_profissional_saude</string>
     <string name="criar_cargo">Criar cargo</string>
-    <string name="nome">Nome</string>
     <string name="profiss_o">Profissão</string>
+    <string name="erro_inserir_nome">Erro ao inserir nome</string>
+    <string name="cargo_guardado_sucesso">Cargo guardado com sucesso</string>
 
 </resources>
