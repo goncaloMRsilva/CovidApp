@@ -3,8 +3,18 @@
     <string name="app_name">CovidApp</string>
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
+    <string name="criar_cargo_fragment_label">Adicionar Cargo</string>
+    <string name="criar_profissionalsaude_fragment_label">Adicionar Profissional de Saúde</string>
+    <string name="editar_profissionalsaude_fragment_label">Editar Profissional de Saude</string>
+    <string name="editar_utente_fragment_label">Editar Utente</string>
+    <string name="editar_vacina_fragment_label">Editar Vacina</string>
+    <string name="eliminar_utente_fragment_label">Eliminar Utente</string>
+    <string name="lista_doses_fragment_label">Lista de Doses</string>
+    <string name="lista_utentes_fragment_label">Lista dos Utentes</string>
+    <string name="nova_vacina_fragment_label">Adicionar Nova Vacina</string>
+    <string name="novo_utente_fragment_label">Adicionar novo Utente</string>
+    <string name="profissionalsaude_fragment_label">Lista dos Profissionais de Saude</string>
+    <string name="ver_vacinas_fragment_label">Ver vacinas</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
@@ -12,8 +22,6 @@
     <string name="editar_utente">Editar Utente</string>
     <string name="nova_dose">Nova Dose</string>
     <string name="eliminar_utente">Eliminar o Utente</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="utente_eliminado_sucesso">Utente eliminado com sucesso</string>
 
     <string name="nome">Nome</string>
@@ -33,9 +41,8 @@
     <string name="editar_vacina">Editar Vacina</string>
     <string name="nova_vacina">Nova Vacina</string>
 
-    <string name="menu_principal_fragment_label">Menu Principal</string>
-    <string name="nova_vacina_fragment_label">Nova Vacina</string>
-    <string name="editar_vacina_fragment_label">Editar Vacina</string>
+    <string name="menu_principal_fragment_label">CovidApp</string>
+    <string name="nova_dose_fragment_label">Inserir nova dose</string>
     <string name="nome_da_vacina">Nome da vacina</string>
     <string name="quantidade">Quantidade</string>
 

@@ -72,7 +72,7 @@ class TabelaDosagem(db: SQLiteDatabase) {
             } else if (i == posColNomeVacina) {
                 "${TabelaVacinas.NOME_TABELA}.${TabelaVacinas.CAMPO_NOME} AS $CAMPO_EXTERNO_NOME_VACINA"
             }else if (i == posColNomeProfissionalSaude) {
-                "${TabelaVacinas.NOME_TABELA}.${TabelaProfissionalSaude.CAMPO_NOME} AS $CAMPO_EXTERNO_NOME_PROFISSIONALSAUDE"
+                "${TabelaProfissionalSaude.NOME_TABELA}.${TabelaProfissionalSaude.CAMPO_NOME} AS $CAMPO_EXTERNO_NOME_PROFISSIONALSAUDE"
             } else {
                 "${NOME_TABELA}.${columns[i]}"
             }

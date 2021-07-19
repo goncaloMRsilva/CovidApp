@@ -74,6 +74,7 @@ class MainActivity : AppCompatActivity() {
                 R.menu.menu_editar_profissionalsaude -> (DadosApp.fragment as EditarProfissionalSaudeFragment).processaOpcaoMenu(item)
                 R.menu.menu_criar_profissionalsaude -> (DadosApp.fragment as CriarProfissionalSaudeFragment).processaOpcaoMenu(item)
                 R.menu.menu_nova_dose -> (DadosApp.fragment as NovaDoseFragment).processaOpcaoMenu(item)
+                R.menu.menu_lista_doses -> (DadosApp.fragment as ListaDosesFragment).processaOpcaoMenu(item)
                 else -> false
             }
         }

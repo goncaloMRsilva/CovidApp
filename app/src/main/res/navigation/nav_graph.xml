@@ -8,8 +8,8 @@
     <fragment
         android:id="@+id/Lista_Doses_Fragment"
         android:name="pt.ipg.covidapp.ListaDosesFragment"
-        android:label="@string/first_fragment_label"
-        tools:layout="@layout/ListaUtentes">
+        android:label="@string/lista_doses_fragment_label"
+        tools:layout="@layout/fragment_lista_doses">
         <action
             android:id="@+id/action_Lista_Doses_Fragment_to_MenuPrincipalFragment"
             app:destination="@id/MenuPrincipalFragment" />
@@ -17,7 +17,7 @@
     <fragment
         android:id="@+id/ListaUtenteFragment"
         android:name="pt.ipg.covidapp.ListaUtentesFragment"
-        android:label="@string/second_fragment_label"
+        android:label="@string/lista_utentes_fragment_label"
         tools:layout="@layout/fragment_lista_utentes">
         <action
             android:id="@+id/action_Lista_Utente_Fragment_to_Novo_Utente_Fragment"
@@ -38,8 +38,8 @@
     <fragment
         android:id="@+id/NovoUtenteFragment"
         android:name="pt.ipg.covidapp.NovoUtenteFragment"
-        android:label="fragment_novo__utente_"
-        tools:layout="@layout/fragment_novo_utente" >
+        android:label="@string/novo_utente_fragment_label"
+        tools:layout="@layout/fragment_novo_utente">
         <action
             android:id="@+id/action_novo_Utente_Fragment_to_SecondFragment"
             app:destination="@id/ListaUtenteFragment" />
@@ -47,7 +47,7 @@
     <fragment
         android:id="@+id/EditarUtenteFragment"
         android:name="pt.ipg.covidapp.EditarUtenteFragment"
-        android:label="fragment_editar__utente_">
+        android:label="@string/editar_utente_fragment_label">
         <action
             android:id="@+id/action_Editar_Utente_Fragment_to_Lista_Utente_Fragment"
             app:destination="@id/ListaUtenteFragment" />
@@ -55,8 +55,8 @@
     <fragment
         android:id="@+id/EliminarUtenteFragment"
         android:name="pt.ipg.covidapp.EliminarUtenteFragment"
-        android:label="fragment_eliminar_utente"
-        tools:layout="@layout/fragment_eliminar_utente" >
+        android:label="@string/eliminar_utente_fragment_label"
+        tools:layout="@layout/fragment_eliminar_utente">
         <action
             android:id="@+id/action_eliminarUtenteFragment_to_Lista_Utente_Fragment"
             app:destination="@id/ListaUtenteFragment" />
@@ -64,8 +64,8 @@
     <fragment
         android:id="@+id/VerVacinasFragment"
         android:name="pt.ipg.covidapp.VerVacinasFragment"
-        android:label="fragment_ver_vacinas"
-        tools:layout="@layout/fragment_ver_vacinas" >
+        android:label="@string/ver_vacinas_fragment_label"
+        tools:layout="@layout/fragment_ver_vacinas">
         <action
             android:id="@+id/action_VerVacinasFragment_to_NovaVacinaFragment"
             app:destination="@id/NovaVacinaFragment" />
@@ -79,8 +79,8 @@
     <fragment
         android:id="@+id/NovaVacinaFragment"
         android:name="pt.ipg.covidapp.NovaVacinaFragment"
-        android:label="fragment_nova_vacina"
-        tools:layout="@layout/fragment_nova_vacina" >
+        android:label="@string/nova_vacina_fragment_label"
+        tools:layout="@layout/fragment_nova_vacina">
         <action
             android:id="@+id/action_NovaVacinaFragment_to_VerVacinasFragment"
             app:destination="@id/VerVacinasFragment" />
@@ -88,8 +88,8 @@
     <fragment
         android:id="@+id/editarVacinaFragment"
         android:name="pt.ipg.covidapp.EditarVacinaFragment"
-        android:label="fragment_editar_vacina"
-        tools:layout="@layout/fragment_editar_vacina" >
+        android:label="@string/editar_vacina_fragment_label"
+        tools:layout="@layout/fragment_editar_vacina">
         <action
             android:id="@+id/action_editarVacinaFragment_to_VerVacinasFragment"
             app:destination="@id/VerVacinasFragment" />
@@ -97,8 +97,8 @@
     <fragment
         android:id="@+id/MenuPrincipalFragment"
         android:name="pt.ipg.covidapp.MenuPrincipalFragment"
-        android:label="fragment_menu_principal"
-        tools:layout="@layout/fragment_menu_principal" >
+        android:label="@string/menu_principal_fragment_label"
+        tools:layout="@layout/fragment_menu_principal">
         <action
             android:id="@+id/action_MenuPrincipalFragment_to_ProfissionalSaudeFragment"
             app:destination="@id/ProfissionalSaudeFragment" />
@@ -115,8 +115,8 @@
     <fragment
         android:id="@+id/ProfissionalSaudeFragment"
         android:name="pt.ipg.covidapp.ProfissionalSaudeFragment"
-        android:label="fragment_profissional_saude"
-        tools:layout="@layout/fragment_profissional_saude" >
+        android:label="@string/profissionalsaude_fragment_label"
+        tools:layout="@layout/fragment_profissional_saude">
         <action
             android:id="@+id/action_ProfissionalSaudeFragment_to_MenuPrincipalFragment"
             app:destination="@id/MenuPrincipalFragment" />
@@ -133,8 +133,8 @@
     <fragment
         android:id="@+id/CriarCargoFragment"
         android:name="pt.ipg.covidapp.CriarCargoFragment"
-        android:label="fragment_criar_cargo"
-        tools:layout="@layout/fragment_criar_cargo" >
+        android:label="@string/criar_cargo_fragment_label"
+        tools:layout="@layout/fragment_criar_cargo">
         <action
             android:id="@+id/action_CriarCargoFragment_to_ProfissionalSaudeFragment"
             app:destination="@id/ProfissionalSaudeFragment" />
@@ -142,8 +142,8 @@
     <fragment
         android:id="@+id/CriarProfissionalSaudeFragment"
         android:name="pt.ipg.covidapp.CriarProfissionalSaudeFragment"
-        android:label="fragment_criar_profissional_saude"
-        tools:layout="@layout/fragment_criar_profissional_saude" >
+        android:label="@string/criar_profissionalsaude_fragment_label"
+        tools:layout="@layout/fragment_criar_profissional_saude">
         <action
             android:id="@+id/action_CriarProfissionalSaudeFragment_to_ProfissionalSaudeFragment"
             app:destination="@id/ProfissionalSaudeFragment" />
@@ -151,8 +151,8 @@
     <fragment
         android:id="@+id/EditarProfissionalSaudeFragment"
         android:name="pt.ipg.covidapp.EditarProfissionalSaudeFragment"
-        android:label="fragment_editar_profissional_saude"
-        tools:layout="@layout/fragment_editar_profissional_saude" >
+        android:label="@string/editar_profissionalsaude_fragment_label"
+        tools:layout="@layout/fragment_editar_profissional_saude">
         <action
             android:id="@+id/action_EditarProfissionalSaudeFragment_to_ProfissionalSaudeFragment"
             app:destination="@id/ProfissionalSaudeFragment" />
@@ -160,8 +160,8 @@
     <fragment
         android:id="@+id/NovaDoseFragment"
         android:name="pt.ipg.covidapp.NovaDoseFragment"
-        android:label="fragment_nova_dose"
-        tools:layout="@layout/fragment_nova_dose" >
+        android:label="@string/nova_dose_fragment_label"
+        tools:layout="@layout/fragment_nova_dose">
         <action
             android:id="@+id/action_novaDoseFragment_to_ListaUtenteFragment"
             app:destination="@id/ListaUtenteFragment" />
