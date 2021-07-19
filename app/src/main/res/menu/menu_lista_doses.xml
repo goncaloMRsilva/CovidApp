@@ -3,15 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="pt.ipg.covidapp.MainActivity">
     <item
-        android:id="@+id/action_nova_dose"
-        android:icon="@drawable/ic_baseline_add_24"
-        android:title="Criar Dose"
-        app:showAsAction="ifRoom" />
-    <item
-        android:id="@+id/action_altera_dosagem"
-        android:icon="@android:drawable/ic_menu_edit"
-        android:title="Alterar Dosagem"
-        app:showAsAction="ifRoom" />
+        android:id="@+id/action_menu_princial"
+        android:title="@string/menu_principal" />
     <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"

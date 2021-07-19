@@ -13,6 +13,9 @@
         android:title="@string/editar_vacina"
         app:showAsAction="ifRoom" />
     <item
+        android:id="@+id/action_menu_princial"
+        android:title="@string/menu_principal" />
+    <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"
         android:title="@string/action_settings"

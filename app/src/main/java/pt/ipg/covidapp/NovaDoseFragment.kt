@@ -1,88 +1,116 @@
 package pt.ipg.covidapp
 
 import android.database.Cursor
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
+import android.widget.SimpleCursorAdapter
+import android.widget.Spinner
+import android.widget.Toast
+import androidx.core.view.iterator
 import androidx.loader.app.LoaderManager
 import androidx.loader.content.CursorLoader
 import androidx.loader.content.Loader
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import androidx.navigation.fragment.findNavController
+import java.util.*
 
 /**
- * A simple [Fragment] subclass as the default destination in the navigation.
+ * A simple [Fragment] subclass as the second destination in the navigation.
  */
+class NovaDoseFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
 
-class ListaUtentesFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
 
-    private var adapterUtentes : AdapterUtentes? = null
+    private val data = Calendar.getInstance()
+
+    private lateinit var spinnerVacinas: Spinner
+    private lateinit var spinnerPF: Spinner
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         DadosApp.fragment = this
-        (activity as MainActivity).menuAtual = R.menu.menu_lista_utentes
+        (activity as MainActivity).menuAtual = R.menu.menu_nova_dose
 
-        return inflater.inflate(R.layout.fragment_lista_utentes, container, false)
+        return inflater.inflate(R.layout.fragment_nova_dose, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val recyclerViewUtentes = view.findViewById<RecyclerView>(R.id.recyclerViewUtentes)
-        adapterUtentes = AdapterUtentes(this)
-        recyclerViewUtentes.adapter = adapterUtentes
-        recyclerViewUtentes.layoutManager = LinearLayoutManager(requireContext())
+        spinnerVacinas = view.findViewById(R.id.spinnerVacinas)
+        spinnerPF = view.findViewById(R.id.spinnerPF)
 
         LoaderManager.getInstance(this)
-            .initLoader(ID_LOADER_MANAGER_UTENTES, null, this)
-    }
-
-
-    fun navegaNovoUtente() {
-        findNavController().navigate(R.id.action_Lista_Utente_Fragment_to_Novo_Utente_Fragment)
-
-    }
-
-    fun navegaEditarUtente() {
-        findNavController().navigate(R.id.action_Lista_Utente_Fragment_to_Editar_Utente_Fragment)
-    }
-
-    fun navegaNovaDose() {
-        findNavController().navigate(R.id.action_ListaUtenteFragment_to_novaDoseFragment)
-    }
-
-
-    fun navegaApagarUtente() {
-        findNavController().navigate(R.id.action_ListaUtenteFragment_to_EliminarUtenteFragment)
-    }
-
-    fun navegaMenuPrincipal() {
-        findNavController().navigate(R.id.action_ListaUtenteFragment_to_MenuPrincipalFragment)
-    }
-
-
-    fun processaOpcaoMenu(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.action_novo_utente -> navegaNovoUtente()
-            R.id.action_editar_utente -> navegaEditarUtente()
-            R.id.action_nova_dose -> navegaNovaDose()
-            R.id.action_apagar_utente -> navegaApagarUtente()
-            R.id.action_menu_princial-> navegaMenuPrincipal()
-            else -> return false
-        }
-
-        return true
+            .initLoader(ID_LOADER_MANAGER_VACINAS, null, this)
+        LoaderManager.getInstance(this)
+            .initLoader(ID_LOADER_MANAGER_PF, null, this)
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
+    }
+
+    fun navegaListaUtentes() {
+        findNavController().navigate(R.id.action_novaDoseFragment_to_ListaUtenteFragment)
+    }
+
+    fun guardar() {
+        val utente = DadosApp.utenteSelecionado!!
+        val idVacina = spinnerVacinas.selectedItemId
+        val idPF = spinnerPF.selectedItemId
+        utente.dose = utente.dose+1
+
+        val dosagem = Dosagem(DataAdministracao = data.time, Dose = utente.dose, IdUtente = DadosApp.utenteSelecionado!!.id, IdVacina = idVacina, IdProfSaude = idPF)
+
+        val uri = activity?.contentResolver?.insert(
+            ContentProviderCovidApp.ENDERECO_DOSAGEM,
+            dosagem.toContentValues()
+        )
+
+        val uriUtente = Uri.withAppendedPath(
+            ContentProviderCovidApp.ENDERECO_UTENTES,
+            utente.id.toString()
+        )
+
+        activity?.contentResolver?.update(
+            uriUtente,
+            utente.toContentValues(),
+            null,
+            null
+        )
+
+        if (uri == null) {
+            Toast.makeText(
+                requireContext(),
+                R.string.erro_inserir_dose,
+                Toast.LENGTH_LONG
+            ).show()
+            return
+        }
+
+        Toast.makeText(
+            requireContext(),
+            R.string.dose_guardada_sucesso,
+            Toast.LENGTH_LONG
+        ).show()
+        navegaListaUtentes()
+    }
+
+    fun processaOpcaoMenu(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.action_guardar_nova_dose -> guardar()
+            R.id.action_cancelar_nova_dose -> navegaListaUtentes()
+            else -> return false
+        }
+
+        return true
     }
 
     /**
@@ -98,10 +126,10 @@ class ListaUtentesFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
     override fun onCreateLoader(id: Int, args: Bundle?): Loader<Cursor> {
         return CursorLoader(
             requireContext(),
-            ContentProviderCovidApp.ENDERECO_UTENTES,
-            TabelaUtente.TODOS_CAMPOS,
+            ContentProviderCovidApp.ENDERECO_VACINAS,
+            TabelaVacinas.TODOS_CAMPOS,
             null, null,
-            TabelaUtente.CAMPO_NOME
+            TabelaVacinas.CAMPO_NOME
         )
     }
 
@@ -149,7 +177,8 @@ class ListaUtentesFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
      * @param data The data generated by the Loader.
      */
     override fun onLoadFinished(loader: Loader<Cursor>, data: Cursor?) {
-        adapterUtentes!!.cursor = data
+        atualizaSpinnerVacinas(data)
+        atualizaSpinnerPF(data)
     }
 
     /**
@@ -163,10 +192,34 @@ class ListaUtentesFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
      * @param loader The Loader that is being reset.
      */
     override fun onLoaderReset(loader: Loader<Cursor>) {
-        adapterUtentes!!.cursor = null
+        atualizaSpinnerVacinas(null)
+        atualizaSpinnerPF(null)
+    }
+
+    private fun atualizaSpinnerVacinas(data: Cursor?) {
+        spinnerVacinas.adapter = SimpleCursorAdapter(
+            requireContext(),
+            android.R.layout.simple_list_item_1,
+            data,
+            arrayOf(TabelaVacinas.CAMPO_NOME),
+            intArrayOf(android.R.id.text1),
+            0
+        )
+    }
+
+    private fun atualizaSpinnerPF(data: Cursor?) {
+        spinnerPF.adapter = SimpleCursorAdapter(
+            requireContext(),
+            android.R.layout.simple_list_item_1,
+            data,
+            arrayOf(TabelaProfissionalSaude.CAMPO_NOME),
+            intArrayOf(android.R.id.text1),
+            0
+        )
     }
 
     companion object {
-        const val ID_LOADER_MANAGER_UTENTES = 0
+        const val ID_LOADER_MANAGER_VACINAS = 0
+        const val ID_LOADER_MANAGER_PF = 0
     }
 }

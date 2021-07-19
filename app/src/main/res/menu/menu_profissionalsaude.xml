@@ -17,6 +17,9 @@
         android:orderInCategory="100"
         android:title="@string/criar_cargo" />
     <item
+        android:id="@+id/action_menu_princial"
+        android:title="@string/menu_principal" />
+    <item
         android:id="@+id/action_settings"
         android:orderInCategory="101"
         android:title="@string/action_settings"

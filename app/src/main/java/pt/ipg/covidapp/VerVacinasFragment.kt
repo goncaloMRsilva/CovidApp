@@ -56,10 +56,15 @@ class VerVacinasFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
         //findNavController().navigate(R.id.action_ListaUtentesFragment_to_verDadosUtenteFragment)
     }
 
+    fun navegaMenuPrincipal() {
+        findNavController().navigate(R.id.action_VerVacinasFragment_to_MenuPrincipalFragment)
+    }
+
     fun processaOpcaoMenu(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.action_novo_profissional_saude -> navegaNovaVacina()
             R.id.action_editar_profissional_saude -> navegaEditarVacina()
+            R.id.action_menu_princial-> navegaMenuPrincipal()
             else -> return false
         }
 

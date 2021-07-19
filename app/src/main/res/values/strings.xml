@@ -60,5 +60,7 @@
     <string name="cargo_guardado_sucesso">Cargo guardado com sucesso</string>
     <string name="erro_alterar_profissional_saude">Erro alterar o profissional de saude</string>
     <string name="profissional_saude_guardado_sucesso">Profissional de saude guardado com sucesso</string>
+    <string name="erro_inserir_dose">Erro ao inserir dose</string>
+    <string name="dose_guardada_sucesso">Dose guardada com sucesso</string>
 
 </resources>

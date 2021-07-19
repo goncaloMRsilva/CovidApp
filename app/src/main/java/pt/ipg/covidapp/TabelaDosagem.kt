@@ -32,7 +32,66 @@ class TabelaDosagem(db: SQLiteDatabase) {
             having: String?,
             orderBy: String?
     ): Cursor? {
-        return db.query(TabelaDosagem.NOME_TABELA, columns, selection, selectionArgs, groupBy, having, orderBy)
+
+        val ultimaColuna = columns.size - 1
+
+        var posColNomeUtente = -1
+        for (i in 0..ultimaColuna) {
+            if (columns[i] == CAMPO_EXTERNO_NOME_UTENTE) {
+                posColNomeUtente = i
+                break
+            }
+        }
+
+        var posColNomeVacina = -1
+        for (i in 0..ultimaColuna) {
+            if (columns[i] == CAMPO_EXTERNO_NOME_VACINA) {
+                posColNomeVacina = i
+                break
+            }
+        }
+
+        var posColNomeProfissionalSaude = -1
+        for (i in 0..ultimaColuna) {
+            if (columns[i] == CAMPO_EXTERNO_NOME_PROFISSIONALSAUDE) {
+                posColNomeProfissionalSaude = i
+                break
+            }
+        }
+
+        if (posColNomeUtente == -1 || posColNomeVacina == -1 || posColNomeProfissionalSaude == -1) {
+            return db.query(NOME_TABELA, columns, selection, selectionArgs, groupBy, having, orderBy)
+        }
+
+        var colunas = ""
+        for (i in 0..ultimaColuna) {
+            if (i > 0) colunas += ","
+
+            colunas += if (i == posColNomeUtente) {
+                "${TabelaUtente.NOME_TABELA}.${TabelaUtente.CAMPO_NOME} AS $CAMPO_EXTERNO_NOME_UTENTE"
+            } else if (i == posColNomeVacina) {
+                "${TabelaVacinas.NOME_TABELA}.${TabelaVacinas.CAMPO_NOME} AS $CAMPO_EXTERNO_NOME_VACINA"
+            }else if (i == posColNomeProfissionalSaude) {
+                "${TabelaVacinas.NOME_TABELA}.${TabelaProfissionalSaude.CAMPO_NOME} AS $CAMPO_EXTERNO_NOME_PROFISSIONALSAUDE"
+            } else {
+                "${NOME_TABELA}.${columns[i]}"
+            }
+        }
+
+        val tabelas = "$NOME_TABELA INNER JOIN ${TabelaUtente.NOME_TABELA} ON ${TabelaUtente.NOME_TABELA}.${BaseColumns._ID}=$CAMPO_ID_UTENTE INNER JOIN ${TabelaVacinas.NOME_TABELA} ON ${TabelaVacinas.NOME_TABELA}.${BaseColumns._ID}=$CAMPO_ID_VACINA INNER JOIN ${TabelaProfissionalSaude.NOME_TABELA} ON ${TabelaProfissionalSaude.NOME_TABELA}.${BaseColumns._ID}=$CAMPO_ID_PF"
+
+        var sql = "SELECT $colunas FROM $tabelas"
+
+        if (selection != null) sql += " WHERE $selection"
+
+        if (groupBy != null) {
+            sql += " GROUP BY $groupBy"
+            if (having != null) " HAVING $having"
+        }
+
+        if (orderBy != null) sql += " ORDER BY $orderBy"
+
+        return db.rawQuery(sql, selectionArgs)
     }
 
     companion object {
@@ -42,7 +101,10 @@ class TabelaDosagem(db: SQLiteDatabase) {
         const val CAMPO_ID_UTENTE = "IdUtente"
         const val CAMPO_ID_VACINA = "IdVacina"
         const val CAMPO_ID_PF = "IdProfSaude"
+        const val CAMPO_EXTERNO_NOME_UTENTE = "nomeUtente"
+        const val CAMPO_EXTERNO_NOME_VACINA = "nomeVacina"
+        const val CAMPO_EXTERNO_NOME_PROFISSIONALSAUDE = "nomeProfissionalSaude"
 
-        val TODOS_CAMPOS =arrayOf(BaseColumns._ID, CAMPO_DATA, CAMPO_DOSAGEM, CAMPO_ID_UTENTE, CAMPO_ID_VACINA, CAMPO_ID_PF)
+        val TODOS_CAMPOS =arrayOf(BaseColumns._ID, CAMPO_DATA, CAMPO_DOSAGEM, CAMPO_ID_UTENTE, CAMPO_ID_VACINA, CAMPO_ID_PF, CAMPO_EXTERNO_NOME_UTENTE, CAMPO_EXTERNO_NOME_VACINA, CAMPO_EXTERNO_NOME_PROFISSIONALSAUDE)
     }
 }

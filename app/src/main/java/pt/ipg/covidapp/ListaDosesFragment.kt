@@ -12,20 +12,22 @@ import androidx.loader.content.CursorLoader
 import androidx.loader.content.Loader
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.navigation.fragment.findNavController
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
-
 class ListaDosesFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
 
     private var adapterDoses : AdapterDoses? = null
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         DadosApp.fragment = this
+        (activity as MainActivity).menuAtual = R.menu.menu_lista_doses
 
         return inflater.inflate(R.layout.fragment_lista_doses, container, false)
     }
@@ -33,7 +35,7 @@ class ListaDosesFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val recyclerViewDoses = view.findViewById<RecyclerView>(R.id.recyclerViewUtentes)
+        val recyclerViewDoses = view.findViewById<RecyclerView>(R.id.recyclerViewDoses)
         adapterDoses = AdapterDoses(this)
         recyclerViewDoses.adapter = adapterDoses
         recyclerViewDoses.layoutManager = LinearLayoutManager(requireContext())
@@ -42,37 +44,18 @@ class ListaDosesFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
             .initLoader(ID_LOADER_MANAGER_DOSES, null, this)
     }
 
-
-    fun navegaNovoUtente() {
-        //findNavController().navigate(R.id.action_ListaLivrosFragment_to_NovoLivroFragment)
-        //todo: navegar para o fragmento de novo utente
+    fun navegaMenuPrincipal() {
+        findNavController().navigate(R.id.action_Lista_Doses_Fragment_to_MenuPrincipalFragment)
     }
-
-    fun navegaEditarUtente() {
-        //todo: navegar para o fragmento da edição de um utente
-    }
-
-    fun navegaNovaDose() {
-        //todo: navegar para o fragmento para nova dose
-    }
-
-    fun navegaApagarUtente() {
-        //todo: navegar para o fragmento para ver o sotck de vacinas
-    }
-
 
     fun processaOpcaoMenu(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.action_novo_utente -> navegaNovoUtente()
-            R.id.action_editar_utente -> navegaEditarUtente()
-            R.id.action_nova_dose -> navegaNovaDose()
-            R.id.action_apagar_utente -> navegaApagarUtente()
+            R.id.action_menu_princial-> navegaMenuPrincipal()
             else -> return false
         }
 
         return true
     }
-
 
     override fun onDestroyView() {
         super.onDestroyView()
@@ -88,14 +71,13 @@ class ListaDosesFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
      * @param args Any arguments supplied by the caller.
      * @return Return a new Loader instance that is ready to start loading.
      */
-
     override fun onCreateLoader(id: Int, args: Bundle?): Loader<Cursor> {
         return CursorLoader(
             requireContext(),
             ContentProviderCovidApp.ENDERECO_DOSAGEM,
             TabelaDosagem.TODOS_CAMPOS,
             null, null,
-            TabelaDosagem.CAMPO_DOSAGEM        //para depois chamar o utente pelo nome
+            TabelaDosagem.CAMPO_EXTERNO_NOME_UTENTE
         )
     }
 

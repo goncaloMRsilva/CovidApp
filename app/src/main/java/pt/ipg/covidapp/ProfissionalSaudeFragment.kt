@@ -56,12 +56,17 @@ class ProfissionalSaudeFragment : Fragment(), LoaderManager.LoaderCallbacks<Curs
         findNavController().navigate(R.id.action_ProfissionalSaudeFragment_to_EditarProfissionalSaudeFragment)
     }
 
+    fun navegaMenuPrincipal() {
+        findNavController().navigate(R.id.action_ProfissionalSaudeFragment_to_MenuPrincipalFragment)
+    }
+
 
     fun processaOpcaoMenu(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.action_novo_profissional_saude -> navegaNovoProfissionalSaude()
             R.id.action_editar_profissional_saude -> navegaEditarProfissionalSaude()
             R.id.action_criar_cargo -> navegaCriarCargo()
+            R.id.action_menu_princial-> navegaMenuPrincipal()
             else -> return false
         }
 

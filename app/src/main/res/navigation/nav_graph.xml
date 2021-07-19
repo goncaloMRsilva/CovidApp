@@ -31,6 +31,9 @@
         <action
             android:id="@+id/action_ListaUtenteFragment_to_MenuPrincipalFragment"
             app:destination="@id/MenuPrincipalFragment" />
+        <action
+            android:id="@+id/action_ListaUtenteFragment_to_novaDoseFragment"
+            app:destination="@id/NovaDoseFragment" />
     </fragment>
     <fragment
         android:id="@+id/NovoUtenteFragment"
@@ -153,5 +156,14 @@
         <action
             android:id="@+id/action_EditarProfissionalSaudeFragment_to_ProfissionalSaudeFragment"
             app:destination="@id/ProfissionalSaudeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/NovaDoseFragment"
+        android:name="pt.ipg.covidapp.NovaDoseFragment"
+        android:label="fragment_nova_dose"
+        tools:layout="@layout/fragment_nova_dose" >
+        <action
+            android:id="@+id/action_novaDoseFragment_to_ListaUtenteFragment"
+            app:destination="@id/ListaUtenteFragment" />
     </fragment>
 </navigation>

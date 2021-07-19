@@ -34,7 +34,7 @@ class AdapterDoses(val fragment: ListaDosesFragment) : RecyclerView.Adapter<Adap
             val dose = dosagem.Dose
             val vacina = dosagem.IdVacina
             val dataAdministracao = dosagem.DataAdministracao
-            //val profissionalSaude =
+            val profissionalSaude = dosagem.IdProfSaude
 
 
             //textViewNome.text = dosagem.nome
